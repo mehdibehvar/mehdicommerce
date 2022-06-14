@@ -33,6 +33,14 @@ async function connect() {
       }
     }
   }
-  
-  const db = { connect, disconnect };
+ function convertDocToObj(doc) {
+    doc._id=doc._id.toString();
+    doc.createdAt=doc.createdAt.toString();
+    doc.updatedAt=doc.updatedAt.toString();
+    return doc;
+  }
+  const db = { connect, disconnect ,convertDocToObj};
   export default db;
+  ///add converDocToObj utility function
+  //id and updateat and createdat are not primary datatype like string-number...
+  //so we convert them to string for nonserialized error

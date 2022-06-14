@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const port = 5000
-const token = '25ab58a87343b96c88b2e658d74f38fdc885834a0e0c654af844d4a64136c5a9'
+const token = "25ab58a87343b96c88b2e658d74f38fdc885834a0e0c654af844d4a64136c5a9"
 
 const app = express()
 
@@ -33,7 +33,7 @@ app.get('/users/me', (req, res) => {
                 id: 1,
                 username: 'behvar',
                 email: 'mehdi@gmail.com',
-                name: 'mehdi'
+                name: 'مهدی بهور'
             }
         })
     }

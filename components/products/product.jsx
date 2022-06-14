@@ -8,16 +8,13 @@ export default function Product({ product }) {
         href={{
           pathname: "/product/[slug]",
           query: {
-            slug:encodeURIComponent(product.id),
+            slug:encodeURIComponent(product.slug),
           },
         }}
       >
         <a className="text-decoration-none text-dark">
-          <div>
-            <div className="cat-describe">
-              <span className="name mb-2">{product.name}</span>
-              <span className="text-danger mb-0">price: {product.price}</span>
-            </div>
+          <div className="d-flex justify-content-around align-items-center">
+        
             <div className="product-image">
               <Image
                 className="img-fluid"
@@ -27,6 +24,10 @@ export default function Product({ product }) {
                 height={100}
                 layout="responsive"
               />
+            </div>
+            <div className="cat-describe">
+              <p className="name mb-2">{product.name}</p>
+              <p className="text-danger mb-0">price: {product.price}</p>
             </div>
           </div>
         </a>

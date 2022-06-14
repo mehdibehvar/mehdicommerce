@@ -1,10 +1,10 @@
 import { useAuthDispatchContext, useAuthStateContext} from "contexts/authContext/AuthContext";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { actionType } from "contexts/authContext/AuthReducer";
 import { post } from "lib";
 
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 
 export default function LoginForm() {
@@ -27,7 +27,7 @@ export default function LoginForm() {
             },
           });
      }else{
-        document.cookie = `token=${data}; expires=Thu, 18 Dec 2023 12:00:00 UTC;`;
+        document.cookie = Cookies.set("token",data)
         router.push("/")
      }
     })
