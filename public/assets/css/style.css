@@ -1,0 +1,53 @@
+@import url(_reset.css);
+@import url(_top-header.css);
+@import url(_shipping.css);
+@import url(_advertising.css); 
+@import url(_carousel.css); 
+@import url(_category.css);
+@import url(_specialsugetion.css);
+@import url(_adds-banner.css);
+@import url(_sign-in.css);
+@import url(_footer.css);
+@import url(_login-form.css);
+@import url(_product-singel.css);
+/* start root style  */
+:root{
+  --numbers-color:rgb(255, 0, 0);
+}
+:root{
+  --subtitle-color:black;
+}
+:root{--secondary-color:blue;}
+:root{--details-color:rgb(0, 248, 41);}
+/* end root style  */
+/* start font face  */
+@font-face {
+  font-family: vazir-bold;
+  src: url("../fonts/Vazir-Bold.eot") format("eot");
+  src: url("../fonts/Vazir-Bold.ttf") format("ttf"),
+    url("../fonts/Vazir-Bold.woff2") format("woff2"),
+    url("../fonts/Vazir-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: vazir-medium;
+  src: url(../fonts/Vazir-Medium.eot) format("eot");
+  src: url(../fonts/Vazir-Medium.woff) format("woff"),
+    url(../fonts/Vazir-Medium.woff2) format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  font-family: vazir-bold;
+}
+/* end font face  */
+@media (max-width: 768px) {
+  .col-cmd {
+    margin-top: 5px;
+  }
+}
+
+

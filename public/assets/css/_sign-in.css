@@ -1,0 +1,20 @@
+.sign-in-modal-content{color: blueviolet;}
+.sign-in-modal-content .modal-header h5 {
+    font-size: 12px;
+}
+.sign-in-modal-content .modal-header {
+    border-bottom: 1px solid rgb(214, 214, 214) !important;
+}
+.sign-in-modal-content .modal-body form div.form-group-email,
+div.form-group-password {
+    border-bottom: 1px solid rgb(214, 214, 214) !important;
+
+}
+.sign-in-modal-content .modal-footer a {
+    color: rgb(92, 92, 253);
+    font-size: 8px;
+}
+.sign-in-modal-content .modal-body form div.form-group-email input::-webkit-input-placeholder,
+.sign-in-modal-content .modal-body form div.form-group-password input::-webkit-input-placeholder {
+    font-size: 8px;
+}

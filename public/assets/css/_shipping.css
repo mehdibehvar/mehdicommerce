@@ -1,0 +1,10 @@
+.shipping-wrapper p {
+  font-size: 10px;
+}
+.shipping-wrapper i {
+  color: red;
+  font-size: 24px;
+}
+.shipping-wrapper p span {
+  font-size: 14px;
+}

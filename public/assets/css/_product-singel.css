@@ -1,0 +1,135 @@
+.custom-breadcrumb-sp {
+    background: transparent;
+}
+.custom-breadcrumb-item-sp::before {
+    content: ">" !important;
+}
+.header-sp div.like-icon i {
+    font-size: 19px;
+}
+#el span {
+    /* margin-bottom: 85px; */
+    border: none;
+    outline: none;
+}
+#el .zoom-main span img {
+    width: 243px;
+    /* height: 200px; */
+}
+.vote-stars p {
+    font-size: 14px;
+}
+.vote-stars span {
+    color: gold;
+    font-size: 15px;
+}
+.sp-content .text-sp p {
+    font-size: 14px;
+    line-height: 30px;
+    color: rgb(85, 85, 85);
+}
+.sp-category span {
+    font-size: 12px;
+    color: #4e555c;
+
+}
+.sp-category span.badge-pill {
+    font-size: 10px;
+}
+.sp-content h6.feature {
+    font-size: 14px;
+}
+ul.feature-list li {
+    font-size: 12px;
+}
+ul.feature-list li a i {
+    font-size: 9px;
+}
+.sp-number input,
+.sp-number button {
+    font-size: 14px;
+}
+ul.sp-description li.nav-item a.active {
+    border-top: 3px solid red;
+    border-radius: 0;
+}
+/* ul.sp-description li.nav-item a.nav-link:hover {
+    border: 0 !important;} */
+.sp-description-wrapper .tab-content .tab-pane-1 p {
+    font-size: 14px;
+    line-height: 35px;
+}
+.sp-rate h6 {
+    font-size: 12px;
+    color: #626a70;
+}
+.sp-description-wrapper .tab-content .tab-pane-1 .expert-critical h6 {
+    font-size: 16px;
+    color: gray;
+}
+.sp-description-wrapper .tab-content .tab-pane-1 .expert-critical p {
+    font-size: 12px;
+
+}
+.tab-pane-1 section.expert-critical-navbar ul li {
+    border-right: 2px solid #a1a1a1;
+}
+.tab-pane-1 section.expert-critical-navbar ul li i {
+    top: -10px;
+    right: -9px;
+}
+.tab-pane-1 section.expert-critical-navbar ul li div img {
+    max-width: 200px;
+}
+.tab-pane-2 ul li div:nth-child(1) {
+    flex: 0 0 25%;
+    background-color: aliceblue;
+    align-items: center;
+}
+.tab-pane-2 ul li div:nth-child(2) {
+    flex: 0 0 75%;
+    background-color: aliceblue;
+    align-items: center;
+}
+.tab-pane-2 h6 {
+    font-size: 16px;
+}
+
+.tab-pane-2 ul li div span {
+    font-size: 12px;
+}
+
+.tab-pane-3 .login-section button i {
+    vertical-align: -3px;
+    color: red;
+}
+.tab-pane-3 .sugetion-sp {
+    width: fit-content;
+}
+.tab-pane-3 .sugetion-sp img {
+    transform: rotate(-20deg);
+}
+.tab-pane-3 .negatine-sugestion img {
+    transform: rotate(180deg);
+}
+
+.tab-pane-3 .media-body h5 {
+    font-size: 14px;
+}
+.tab-pane-3 .media-body ul li {
+    font-size: 12px;
+}
+
+.tab-pane-3 .vote-wrapper span {
+    font-size: 13px;
+}
+.opinion-wrapper .opinion-header i {
+    font-size: 24px;
+    vertical-align: -4px;
+}
+div.progress{
+    height:2px;
+}
+div.progress-bar{
+    width:75%;
+}

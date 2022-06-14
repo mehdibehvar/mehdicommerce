@@ -1,0 +1,139 @@
+.custom-nav-tabs .nav-link {
+    border: none;
+    color: #343a40;
+    font-size: 12px;
+}
+.custom-nav-tabs .nav-link.active {
+    background-color: transparent;
+    color: tomato;
+}
+.img-special-sug {
+    max-width: 200px;
+    height: 200px;
+    overflow: hidden;
+   
+}
+.img-special-sug:hover img.first-sugetion,
+.img-special-sug:hover img.second-sugetion {
+    transform: translateY(-200px);
+}
+.img-special-sug img {
+    height: -webkit-fill-available;
+    transition: 0.7s ease;
+}
+.special-caption .special-brand a {
+    color: rgb(97, 78, 150);
+    font-size: 12px;
+}
+.special-caption .stars i {
+    color: gold;
+    font-size: 12px;
+}
+.special-caption .discount p,
+s {
+    font-size: 12px;
+    color: #6c757d;
+}
+/* start countdown timer style  */
+.special-caption .count-down-timer p {
+    color: #6c757d;
+    font-size: 12px;
+}
+.special-caption .count-down-timer .demos span {
+    margin: 6px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    color: gold;
+    font-size: 16px;
+    background-color: black;
+    border-radius: 4px;
+}
+.special-caption .count-down-timer .demos span#days,
+.special-caption .count-down-timer .demos span#hours,
+.special-caption .count-down-timer .demos span#minutes,
+.special-caption .count-down-timer .demos span#seconds {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.special-caption .count-down-timer .demos span#days::after {
+    content: 'روز';
+    position: absolute;
+    top: 34px;
+    font-size: 14px;
+    color: var(--numbers-color);
+}
+.special-caption .count-down-timer .demos span#hours::after {
+    content: 'ساعت';
+    position: absolute;
+    top: 35px;
+    font-size: 13px;
+    color: var(--subtitle-color);
+}
+.special-caption .count-down-timer .demos span#minutes::after {
+    content: 'دقیقه';
+    position: absolute;
+    top: 35px;
+    font-size: 13px;
+    color: var(--secondary-color);
+}
+.special-caption .count-down-timer .demos span#seconds::after {
+    content: 'ثانیه';
+    position: absolute;
+    top: 35px;
+    font-size: 14px;
+    color: var(--details-color);
+}
+.sugetion-expired-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width:fit-content; */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.sugetion-expired-text p {
+    padding: 5px;
+    margin: 0;
+    border-radius: 5px;
+    /* padding: 4px; */
+    color: white;
+    background-color: red;
+    height: fit-content;
+    /* top: 50%; */
+    /* right: 50%; */
+    /* transform: translate(-20px, 5px); */
+
+
+}
+.custom-sugestion-border {
+    box-shadow: 0 0 1px 1px #d3d2d2;
+}
+.nav-sugestion-title {
+    right: 14px;
+    top: 5px;
+    font-size: 16px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid red;
+    /* color: #0d0d0d; */
+}
+@media (max-width:576px) {.nav-sugestion-title {
+    right: 35%;
+    top: -35px;
+    font-size: 14px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid red;
+}}
+/* @media (max-width: 540px) {
+    .nav-sugestion-title
+    {
+    color: blue;
+    }
+}
+     */

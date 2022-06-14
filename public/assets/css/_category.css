@@ -1,0 +1,12 @@
+div.product-image{
+    width: 100px;
+    height: 100px;
+
+}
+.cat-describe span.name{
+    font-size: 12px;
+    color: blue;
+}
+.category-section:hover{
+    box-shadow: 0px 0px 7px 1px #ccc;
+}
