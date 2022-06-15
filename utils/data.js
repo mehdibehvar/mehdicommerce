@@ -69,7 +69,7 @@ const data = {
         brand: 'sony',
         rating: 4.2,
         numReviews: 10,
-        countInStock: 20,
+        countInStock: 0,
         description: 'This is a very nice headset',
       },
      

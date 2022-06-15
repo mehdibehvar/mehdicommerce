@@ -6,8 +6,7 @@ import Cookies from 'js-cookie';
 const useAuthUser=()=>{
     const dispatch=useAuthDispatchContext();
     useEffect(() => {
-      const tokencookie=Cookies.get("token")
-      console.log(tokencookie);
+      const tokencookie=Cookies.get("token");
         if(tokencookie){
           get(`http://localhost:5000/users/me`,{
             headers:{authorization:tokencookie}

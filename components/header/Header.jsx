@@ -9,6 +9,7 @@ import { actionType } from "contexts/authContext/AuthReducer";
 import NavbarMenu from "./NavbarMenu";
 import Logo from "./Logo";
 import Search from "./Search";
+import Basket from "./Basket";
 export default function Header() {
   const { user, token } = useAuthStateContext();
   const dispatch = useAuthDispatchContext();
@@ -41,13 +42,7 @@ export default function Header() {
                     favorite_border
                   </span>
                 </a>
-                <Link href="/basket">
-                  <a className="cta handbag">
-                    <span className="material-icons text-muted m-2">
-                      shopping_bag
-                    </span>
-                  </a>
-                </Link>
+            <Basket/>
                 {token ? (
                   <div className="profile-wrapper d-flex align-items-center">
                     <div className="btn-group">

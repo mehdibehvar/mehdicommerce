@@ -10,3 +10,6 @@ div.product-image{
 .category-section:hover{
     box-shadow: 0px 0px 7px 1px #ccc;
 }
+button.add-to-basket-button{
+    font-size: 10px;
+}

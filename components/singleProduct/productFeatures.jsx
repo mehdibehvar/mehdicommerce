@@ -1,17 +1,33 @@
+import { basketActionTypes, store } from "contexts/store";
 import Image from "next/image";
+import { useContext } from "react";
 
-export default function ProductFeatures({product}) {
-    const {name,id,price,description,image}=product
+export default function ProductFeatures({ product }) {
+  const { state, dispatch } = useContext(store);
+  const { name, price, description, image, countInStock } = product;
+
+  const addToCartHandeler = (event) => {
+    event.preventDefault();
+    if (countInStock > 0) {
+      dispatch({
+        type: basketActionTypes.add_to_basket,
+        payload: { ...product, quantity: 1 },
+      });
+    } else {
+      window.alert("این محصول در انبار وجود ندارد");
+    }
+  };
+
   return (
     <div className="row bg-white  my-3">
       <div className="col-8 col-md-5 p-5 " id="el">
-       <Image
-       src={image}
-       alt={name}
-       width={250}
-       height={200}
-       layout="responsive"
-       />
+        <Image
+          src={image}
+          alt={name}
+          width={250}
+          height={200}
+          layout="responsive"
+        />
       </div>
       <div className="col-sm-12 col-md-7 border-right sp-content ">
         <div className="header-sp d-flex justify-content-between mt-4">
@@ -41,9 +57,7 @@ export default function ProductFeatures({product}) {
           <span className="ml-3 text-danger">{price} تومان</span>
         </div>
         <div className="text-sp  mt-5 border-bottom">
-          <p>
-           {description}
-          </p>
+          <p>{description}</p>
         </div>
         <div className="d-flex justify-content-between mt-3 sp-category">
           <span>برند: شیائومی</span>
@@ -103,7 +117,11 @@ export default function ProductFeatures({product}) {
                 />
               </div>
               <div className="col-sm-6">
-                <button type="submit" className="btn btn-success ">
+                <button
+                  onClick={addToCartHandeler}
+                  type="text"
+                  className="btn btn-success "
+                >
                   افزودن به سبد خرید
                 </button>
               </div>
