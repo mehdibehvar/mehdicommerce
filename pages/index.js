@@ -11,62 +11,55 @@ import Carousel from "../components/slider/Carousel";
 import MainLayout from "../layouts/main-layout";
 import styles from "../styles/Home.module.css";
 
-
-
-
-export default function Home({products}) {
-// const {state}=useContext(store);
-// const {darkMode}=state;
+export default function Home({ products }) {
+  // const {state}=useContext(store);
+  // const {darkMode}=state;
 
   return (
     <>
-     <div className={styles.container}>
       <Head>
-      <title>brand-online-shop</title>
+        <title>brand-online-shop</title>
       </Head>
-   <MainLayout>
-       <Carousel/>
-        <ShipingNav/>
-        <Banner/>
-        <Products products={products}/>
+
+      <MainLayout>
+        <Carousel />
+        <ShipingNav />
+        <Banner />
+        <Products products={products} />
         <Footer />
- </MainLayout>  
-    </div>
- 
+      </MainLayout>
     </>
-   
   );
 }
 
 export async function getServerSideProps() {
-  await db.connect()
-  const products=await Product.find({}).lean();
+  await db.connect();
+  const products = await Product.find({}).lean();
   await db.disconnect();
-  if(!products){
-    return { notFound:true}
+  if (!products) {
+    return { notFound: true };
   }
-  return ({
-    props:{
-      products:products.map(doc=>db.convertDocToObj(doc))
-    }
-  })
+  return {
+    props: {
+      products: products.map((doc) => db.convertDocToObj(doc)),
+    },
+  };
 }
 
 //converDocToObj is an utility function than convert doc  JSON serializable data types.
 
 ///Product is a mongoos model of data
 
-///use find function 
-  // Mongoose models provide several static helper functions for CRUD operations. 
-  // Each of these functions returns a mongoose Query object.
+///use find function
+// Mongoose models provide several static helper functions for CRUD operations.
+// Each of these functions returns a mongoose Query object.
 
 ///use lean function
 ///By default, Mongoose queries return an instance of the Mongoose Document class.
-/// Documents are much heavier than vanilla JavaScript objects, 
-///because they have a lot of internal state for change tracking. Enabling the lean 
-///option tells Mongoose to skip instantiating a full Mongoose document 
+/// Documents are much heavier than vanilla JavaScript objects,
+///because they have a lot of internal state for change tracking. Enabling the lean
+///option tells Mongoose to skip instantiating a full Mongoose document
 ///and just give you the POJO.(Plain Old JavaScript Object )
-
 
 ///Error: Error serializing `.products[0].createdAt` returned from `getServerSideProps` in "/".
 ///Reason: `object`("[object Date]") cannot be serialized as JSON.

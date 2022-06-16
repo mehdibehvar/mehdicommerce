@@ -9,7 +9,7 @@ import { actionType } from "contexts/authContext/AuthReducer";
 import NavbarMenu from "./NavbarMenu";
 import Logo from "./Logo";
 import Search from "./Search";
-import Basket from "./Basket";
+import Basket from "./BasketIcon";
 export default function Header() {
   const { user, token } = useAuthStateContext();
   const dispatch = useAuthDispatchContext();
@@ -23,90 +23,95 @@ export default function Header() {
   }
 
   return (
-    <header className="w-100 m-3">
-      <div className="top-header-container m-2">
-        <div className="brand-container">
-          <div className="top-header container ">
-            <div className="row  d-flex">
-              <Logo />
-              <Search />
-              {/*top-header-buttons*/}
-              <div className="cta-buttons d-flex align-items-center justify-content-end col-5 col-sm-5 col-md-5">
-                <a className="cta chat">
-                  <span className="material-icons text-muted m-2">
-                    whatsapp
-                  </span>
-                </a>
-                <a className="cta hearth">
-                  <span className="material-icons text-muted m-2">
-                    favorite_border
-                  </span>
-                </a>
-            <Basket/>
-                {token ? (
-                  <div className="profile-wrapper d-flex align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="dropdown-toggle bg-white border-0"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <span className="material-icons text-success m-2">
-                          person
-                        </span>
-                      </button>
-                      <ul className="dropdown-menu login-menu">
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            پروفایل
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            کیف پول
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            پیامها
-                          </a>
-                        </li>
-
-                        <li>
-                          <Link href="/">
-                            <a className="dropdown-item" onClick={handleLogout}>
-                              خروج
+    <header className="header-wrapper bg-light w-100  position-sticky top-0 start-0 ">
+      <div className="bg-success bg-opacity-10 p-2">
+        <div className="top-header-container m-2  ">
+          <div className="brand-container ">
+            <div className="top-header ">
+              <div className="row  d-flex">
+                <Logo />
+                <Search />
+                {/*top-header-buttons*/}
+                <div className="cta-buttons d-flex align-items-center justify-content-end col-5 col-sm-5 col-md-5">
+                  <a className="cta chat">
+                    <span className="material-icons text-muted m-2">
+                      whatsapp
+                    </span>
+                  </a>
+                  <a className="cta hearth">
+                    <span className="material-icons text-muted m-2">
+                      favorite_border
+                    </span>
+                  </a>
+                  <Basket />
+                  {token ? (
+                    <div className="profile-wrapper d-flex align-items-center">
+                      <div className="btn-group">
+                        <button
+                          type="button"
+                          className="dropdown-toggle bg-white border-0"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <span className="material-icons text-success m-2">
+                            person
+                          </span>
+                        </button>
+                        <ul className="dropdown-menu login-menu">
+                          <li>
+                            <a className="dropdown-item" href="#">
+                              پروفایل
                             </a>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
+                          </li>
+                          <li>
+                            <a className="dropdown-item" href="#">
+                              کیف پول
+                            </a>
+                          </li>
+                          <li>
+                            <a className="dropdown-item" href="#">
+                              پیامها
+                            </a>
+                          </li>
 
-                    <span className="text-secondary user-login-text m-2 fw-light">
-                      {user.name}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="profile-wrapper d-flex align-items-center">
-                    <Link href="/login">
-                      <a>
-                        <span className="material-icons text-muted m-2">
-                          person
-                        </span>
-                      </a>
-                    </Link>
-                    <span className="text-secondary user-login-text m-2 fw-light">
-                      ورود به حساب کاربری
-                    </span>
-                  </div>
-                )}
+                          <li>
+                            <Link href="/">
+                              <a
+                                className="dropdown-item"
+                                onClick={handleLogout}
+                              >
+                                خروج
+                              </a>
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <span className="text-secondary user-login-text m-2 fw-light">
+                        {user.name}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="profile-wrapper d-flex align-items-center">
+                      <Link href="/login">
+                        <a>
+                          <span className="material-icons text-muted m-2">
+                            person
+                          </span>
+                        </a>
+                      </Link>
+                      <span className="text-secondary user-login-text m-2 fw-light">
+                        ورود به حساب کاربری
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <NavbarMenu />
       </div>
-      <NavbarMenu />
     </header>
   );
 }

@@ -2,11 +2,10 @@ import { store } from "contexts/store";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
-export default function Basket() {
+export default function BasketIcon() {
   const {state} = useContext(store);
   const { basketItems } = state.basket;
   const [domLoaded, setDomLoaded] = useState(false);
-  console.log(basketItems.length);
   useEffect(() => {
     setDomLoaded(true);
   }, []);

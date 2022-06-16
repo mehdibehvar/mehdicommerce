@@ -2,7 +2,7 @@
 export default function Search() {
   return (
     <div
-    className="search bg-light d-flex  align-items-center flex-row-reverse justify-content-end col-5 col-sm-5 col-md-5"
+    className="search d-flex  align-items-center flex-row-reverse justify-content-end col-5 col-sm-5 col-md-5"
     dir="rtl"
   >
     <div className="no-result"></div>

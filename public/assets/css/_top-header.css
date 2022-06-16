@@ -14,9 +14,7 @@ ul.login-menu {
     color:white;
     font-size: 12px;
     }
-div.top-header{
-    background-color: #ffff;
-}
+
 span.user-login-text{
     font-size: 10px;
 }
@@ -48,4 +46,7 @@ span.basket-badg{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+header.header-wrapper{
+    z-index: 100;
 }

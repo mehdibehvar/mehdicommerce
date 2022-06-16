@@ -19,6 +19,7 @@
 }
 :root{--secondary-color:blue;}
 :root{--details-color:rgb(0, 248, 41);}
+:root{--header-bg-color:#effade}
 /* end root style  */
 /* start font face  */
 @font-face {

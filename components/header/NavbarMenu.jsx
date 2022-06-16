@@ -5,7 +5,7 @@ export default function NavbarMenu() {
   return (
     <nav className="header-menu  w-100 d-flex align-items-center justify-content-center position-relative">
     <div className="inner w-100 d-flex align-items-center justify-content-center position-relative">
-      <ul className="d-flex align-items-center justify-content-center">
+      <ul className="d-flex align-items-center justify-content-center ">
         <li>
           <Link href="/">
             <a>

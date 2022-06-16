@@ -1,21 +1,26 @@
 import { basketActionTypes, store } from "contexts/store";
+import { get } from "lib";
 import Image from "next/image";
 import { useContext } from "react";
-
+import { useRouter } from "next/router";
 export default function ProductFeatures({ product }) {
-  const { state, dispatch } = useContext(store);
-  const { name, price, description, image, countInStock } = product;
-
-  const addToCartHandeler = (event) => {
-    event.preventDefault();
-    if (countInStock > 0) {
+  const { dispatch ,state} = useContext(store);
+  const { name, price, description, image, countInStock,_id } = product;
+  const router=useRouter()
+  const addToCartHandeler =async () => {
+    const existedItem=state.basket.basketItems.find(item=>item._id===_id);
+    ///if the item exist in my basket sum its prevquantity with one;otherwise return one because its the first time you want add it to basket
+    const quantity=existedItem?parseInt(existedItem.quantity)+1:1
+    const data=await get(`/api/products/${_id}`);
+    if (data.countInStock>=quantity) {
       dispatch({
-        type: basketActionTypes.add_to_basket,
-        payload: { ...product, quantity: 1 },
+        type:  basketActionTypes.update_basket,
+        payload: { ...product, quantity },
       });
     } else {
-      window.alert("این محصول در انبار وجود ندارد");
+      window.alert(`درخواست شما بیشتر از موجودی انبار است.تعداد ${countInStock}از این محصول در انبار وجود دارد`);
     }
+    router.push("/basket")
   };
 
   return (
@@ -119,7 +124,7 @@ export default function ProductFeatures({ product }) {
               <div className="col-sm-6">
                 <button
                   onClick={addToCartHandeler}
-                  type="text"
+                  type="button"
                   className="btn btn-success "
                 >
                   افزودن به سبد خرید
@@ -132,3 +137,4 @@ export default function ProductFeatures({ product }) {
     </div>
   );
 }
+///in line 11 we send an ajax request to databse.to check is product in stock yet.
