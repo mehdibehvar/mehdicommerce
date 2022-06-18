@@ -13,6 +13,7 @@ export const basketActionTypes = {
   change_quantity: "CHANGE-QUANTITY",
   remove_from_basket: "REMOVE-FROM-BASKET",
   update_basket: "UPDATE-BASKET",
+  clear_basket:"CLEAR-BASKET"
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -21,17 +22,6 @@ function reducer(state, action) {
         ...state,
         darkMode: !state.darkMode,
       };
-    case basketActionTypes.add_to_basket:
-      const newItem = action.payload;
-      const prevBasketItems = state.basket.basketItems;
-      const existedItem = prevBasketItems.find(
-        (item) => item._id === newItem._id
-      );
-      const newBasketItems = existedItem
-        ? prevBasketItems
-        : [...prevBasketItems, newItem];
-      Cookies.set("basket", JSON.stringify(newBasketItems));
-      return { ...state, basket: { basketItems: newBasketItems } };
       ///upadate the basket////
     case basketActionTypes.update_basket: {
       const newItem = action.payload;
@@ -58,7 +48,8 @@ function reducer(state, action) {
       const newBasketItems = prevBasketItems.filter((item) => item._id != id);
       return { ...state, basket: { basketItems: newBasketItems } };
     }
-
+    case basketActionTypes.clear_basket:
+      return{...state,basket:{basketItems:[]}}
     default:
       return state;
   }

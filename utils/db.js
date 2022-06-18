@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const connection = {};
 
 async function connect() {
-  if (connection.isConnected) {
+  if (connection.isConnected){
     console.log('already connected');
     return;
   }
@@ -42,5 +42,5 @@ async function connect() {
   const db = { connect, disconnect ,convertDocToObj};
   export default db;
   ///add converDocToObj utility function
-  //id and updateat and createdat are not primary datatype like string-number...
+  //id and updateAt and createdAt are not primary datatype like string-number...
   //so we convert them to string for nonserialized error

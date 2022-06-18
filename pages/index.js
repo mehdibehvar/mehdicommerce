@@ -24,7 +24,6 @@ export default function Home({ products }) {
       <MainLayout>
         <Carousel />
         <ShipingNav />
-        <Banner />
         <Products products={products} />
         <Footer />
       </MainLayout>

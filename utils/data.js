@@ -1,4 +1,19 @@
+import bcrypt from "bcrypt"
 const data = {
+ users:[
+{
+  name:"مدیر",
+  email:"admin@gmail.com",
+  password:bcrypt.hashSync("admin",Math.LOG2E),
+  isAdmin:true
+},
+{
+  name:"مهدی بهور",
+  email:"user@gmail.com",
+  password:bcrypt.hashSync("user",Math.LOG2E),
+  isAdmin:false
+}
+  ],
     products: [
       {
         name: 'هدست یک',
@@ -76,3 +91,14 @@ const data = {
     ],
   };
   export default data;
+
+///bcrypt convert the password to an encrypted password.
+///bcrypt is a library to help you hash passwords.
+///Why is async mode recommended over sync mode?
+///If you are using bcrypt on a simple script, 
+///using the sync mode is perfectly fine. However,
+/// if you are using bcrypt on a server, the async mode is recommended.
+/// This is because the hashing done by bcrypt is CPU intensive,
+/// so the sync version will block the event loop and prevent your application 
+///from servicing any other inbound requests or events.
+/// The async version uses a thread pool which does not block the main event loop.

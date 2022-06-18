@@ -1,16 +1,27 @@
 import BasketItem from "components/basket/BasketItem";
 import { store } from "contexts/store";
+import Cookies from "js-cookie";
 import BasketLayout from "layouts/BasketLayout";
 import dynamic from "next/dynamic";
-import { useContext} from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useContext } from "react";
 
  function Basket() {
   const { state } = useContext(store);
   const { basketItems } = state.basket;
+  const token=Cookies.get("token");
+  const router=useRouter()
+  function handlePayment() {
+    if(token){
+      router.push("/payment")
+    }else{
+      router.push("/login")
+    }
+  }
   const basketItemsList = basketItems.map((item) => (
     <BasketItem key={item._id} product={item} />
   ));
-
 
   return (
     <BasketLayout>
@@ -18,7 +29,7 @@ import { useContext} from "react";
         <h5 className="mb-0 ">سبد خرید شما:</h5>
         <div className="row g-3">
           <div className="col-sm-10 ">
-            <table className="table border">
+            {basketItems.length?<table className="table border">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -29,7 +40,14 @@ import { useContext} from "react";
                 </tr>
               </thead>
               <tbody>{basketItemsList}</tbody>
-            </table>
+            </table>:<div>
+              <p className="text-danger">سبد خرید شما خالی است</p>
+            <Link href="/">
+            <a>برو برای خرید</a>
+            </Link>
+            </div>
+           }
+          
           </div>
           <div className="col-sm-2 border">
             <div className="position-sticky top-50 start-0 ">
@@ -38,7 +56,7 @@ import { useContext} from "react";
                   <h5>تعداد {basketItems.reduce((ac,cu)=>ac+parseInt(cu.quantity),0)} کالا:</h5>
                   <h5>مبلغ قابل پرداخت: {basketItems.reduce((ac,cu)=>ac+(cu.price*cu.quantity),0)} تومان</h5>
                 </div>
-                <button className="btn btn-primary">تکمیل خرید</button>
+                <button onClick={handlePayment} className="btn btn-primary">تکمیل خرید</button>
               </div>
             </div>
           </div>

@@ -4,22 +4,26 @@ import {
   useAuthDispatchContext,
   useAuthStateContext,
 } from "contexts/authContext/AuthContext";
-
 import { actionType } from "contexts/authContext/AuthReducer";
 import NavbarMenu from "./NavbarMenu";
 import Logo from "./Logo";
 import Search from "./Search";
 import Basket from "./BasketIcon";
+import Cookies from "js-cookie";
 export default function Header() {
   const { user, token } = useAuthStateContext();
-  const dispatch = useAuthDispatchContext();
-
-  useAuthUser();
+  ///the context for authentication is different from store context;
+  ///I have two contet 1-storecontext  2-authContext
+  const {dispatch:authDispatch} = useAuthDispatchContext();
+useAuthUser()
   function handleLogout() {
-    document.cookie = `token=${token}; expires=Thu, 18 Dec 2000 12:00:00 UTC;`;
-    dispatch({
+    Cookies.remove('token');
+    Cookies.remove('user');
+    Cookies.remove('basket');
+    authDispatch({
       type: actionType.logout_user,
     });
+ 
   }
 
   return (

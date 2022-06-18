@@ -1,36 +1,30 @@
 import { useAuthDispatchContext } from 'contexts/authContext/AuthContext';
 import { actionType } from 'contexts/authContext/AuthReducer';
 import { useEffect } from 'react'
-import { get } from 'lib';
 import Cookies from 'js-cookie';
 const useAuthUser=()=>{
     const dispatch=useAuthDispatchContext();
-    useEffect(() => {
-      const tokencookie=Cookies.get("token");
-        if(tokencookie){
-          get(`http://localhost:5000/users/me`,{
-            headers:{authorization:tokencookie}
-          }).then(response=>{
-                if(response){
-                  dispatch({
-                    type:actionType.login_success,
-                    payload:{
-                        token:tokencookie,
-                        user:response.data
-                    }
-                })
-                }
-              }).catch((error) => {
-              dispatch({
-                type: actionType.login_error,
-                payload: {
-                  error,
-                },
-              });
-            });
-         
-         }
+      const token=Cookies.get("token");
+      const user=Cookies.get("user");
+ useEffect(() => {
+  if(token){
+    dispatch({
+      type:actionType.login_success,
+      payload:{
+          token:token,
+          ///conver string user to object user
+          user:JSON.parse(user)
+      }
+  })
+   
+   }
+ 
+
+ }, [dispatch,token,user])
+ 
       
-    }, [dispatch]);
   }
   export default useAuthUser;
+  ///A common use of JSON is to exchange data to/from a web server.
+///When receiving data from a web server or from cokies, the data is always a string.
+///Parse the data with JSON.parse(), and the data becomes a JavaScript object.

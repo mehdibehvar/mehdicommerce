@@ -5,6 +5,7 @@ import { post } from "lib";
 
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import Link from "next/link";
 
 
 export default function LoginForm() {
@@ -13,62 +14,52 @@ export default function LoginForm() {
   const {error,loading}=useAuthStateContext();
   const router=useRouter()
 
-  const onSubmit = inputs => {
+  const onSubmit =async (inputs) => {
     const {email,password}=inputs;
     dispatch({
-        type:actionType.login_request,
-    })
-    post("http://localhost:5000/login",{username:email,password}).then(({data,success})=>{
-     if(!success){
-        dispatch({
-            type: actionType.login_error,
-            payload: {
-              error:"wrong password and email"
-            },
-          });
-     }else{
-        document.cookie = Cookies.set("token",data)
-        router.push("/")
-     }
-    })
+      type:actionType.login_request,
+  })
+ try {
+  const response=await post("api/users/login",{email,password});
+  const {name,email:userEmail,_id,isAdmin,token}=response;
+  const user={name,userEmail,_id,isAdmin}
+   Cookies.set("token",token);
+   Cookies.set("user",JSON.stringify(user));
+   router.push("/")
+ } catch (error) {
+dispatch({
+  type:actionType.login_error,
+  payload:{
+    error:error.response.data.message
+  }
+})
+ }
 };
 
   return (<>
     {loading?<p className="text-danger fs-1">loading.....</p>:<>
     <div className="container w-50">
-  <form className="row g-3"  onSubmit={handleSubmit(onSubmit)}>
-<div className="col-md-6">
+<form className="row mt-5 mx-5 g-3"  onSubmit={handleSubmit(onSubmit)}>
+<div className="col-md-10">
   <label htmlFor="inputEmail4" className="form-label">ایمیل</label>
   <input  {...register("email", { required: true})}  type="email" className="form-control" id="inputEmail4"/>
 </div>
-<div className="col-md-6">
+<div className="col-md-10">
   <label htmlFor="inputPassword4" className="form-label">رمز عبور</label>
   <input  {...register("password", { required: true})}  type="password" className="form-control" id="inputPassword4"/>
 </div>
-<div className="col-12">
-  <label htmlFor="inputAddress" className="form-label">شماره موبایل</label>
-  <input {...register("mobile", { pattern:"/^09[0|1|2|3][0-9]{8}$/i"})} type="mobile-number" className="form-control" id="inputAddress" placeholder="0990945...."/>
-</div>
-
-
-<div className="col-12">
-  <div className="form-check">
-    <input className="form-check-input" type="checkbox" id="gridCheck"/>
-    <label className="form-check-label" htmlFor="gridCheck">
-      Check me out
-    </label>
-  </div>
-</div>
-<div className="col-12">
-  <button type="submit" className="btn btn-primary">Sign in</button>
-</div>
 {error?<span className="text-danger">{error}</span>:null}
+<div className="col-10">
+  <button type="submit" className="btn btn-primary w-100 mt-3">Sign in</button>
+</div>
+<div className="col-10">
+  <span>حساب کاربری ندارید؟</span><span><Link href="/signup">
+  <a>ایجاد حساب جدید</a>
+  </Link></span>
+</div>
+
 </form>
   </div>
-<style jsx>{`{span{
-  color:red;
-font-size:14px
-}}`}</style>
     </>}
   </>
     
