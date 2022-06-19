@@ -13,6 +13,7 @@ export default function LoginForm() {
   const dispatch=useAuthDispatchContext();
   const {error,loading}=useAuthStateContext();
   const router=useRouter()
+const redirect=router.query.redirect
 
   const onSubmit =async (inputs) => {
     const {email,password}=inputs;
@@ -21,11 +22,12 @@ export default function LoginForm() {
   })
  try {
   const response=await post("api/users/login",{email,password});
-  const {name,email:userEmail,_id,isAdmin,token}=response;
-  const user={name,userEmail,_id,isAdmin}
-   Cookies.set("token",token);
-   Cookies.set("user",JSON.stringify(user));
-   router.push("/")
+  const userInfo=response;
+   dispatch({
+    type:actionType.login_success,
+    payload:userInfo
+   })
+   router.push(redirect||"/");
  } catch (error) {
 dispatch({
   type:actionType.login_error,
@@ -53,8 +55,8 @@ dispatch({
   <button type="submit" className="btn btn-primary w-100 mt-3">Sign in</button>
 </div>
 <div className="col-10">
-  <span>حساب کاربری ندارید؟</span><span><Link href="/signup">
-  <a>ایجاد حساب جدید</a>
+  <span>حساب کاربری ندارید؟</span><span><Link href="/register"> 
+  <a> ایجاد حساب جدید</a>
   </Link></span>
 </div>
 

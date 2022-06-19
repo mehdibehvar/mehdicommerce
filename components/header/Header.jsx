@@ -1,30 +1,12 @@
-import Link from "next/link";
-import useAuthUser from "coustomHooks/authuser";
-import {
-  useAuthDispatchContext,
-  useAuthStateContext,
-} from "contexts/authContext/AuthContext";
-import { actionType } from "contexts/authContext/AuthReducer";
+
 import NavbarMenu from "./NavbarMenu";
 import Logo from "./Logo";
 import Search from "./Search";
 import Basket from "./BasketIcon";
-import Cookies from "js-cookie";
+
+import LoginIcon from "./LoginIcon";
 export default function Header() {
-  const { user, token } = useAuthStateContext();
-  ///the context for authentication is different from store context;
-  ///I have two contet 1-storecontext  2-authContext
-  const {dispatch:authDispatch} = useAuthDispatchContext();
-useAuthUser()
-  function handleLogout() {
-    Cookies.remove('token');
-    Cookies.remove('user');
-    Cookies.remove('basket');
-    authDispatch({
-      type: actionType.logout_user,
-    });
- 
-  }
+
 
   return (
     <header className="header-wrapper bg-light w-100  position-sticky top-0 start-0 ">
@@ -48,67 +30,7 @@ useAuthUser()
                     </span>
                   </a>
                   <Basket />
-                  {token ? (
-                    <div className="profile-wrapper d-flex align-items-center">
-                      <div className="btn-group">
-                        <button
-                          type="button"
-                          className="dropdown-toggle bg-white border-0"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          <span className="material-icons text-success m-2">
-                            person
-                          </span>
-                        </button>
-                        <ul className="dropdown-menu login-menu">
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              پروفایل
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              کیف پول
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="#">
-                              پیامها
-                            </a>
-                          </li>
-
-                          <li>
-                            <Link href="/">
-                              <a
-                                className="dropdown-item"
-                                onClick={handleLogout}
-                              >
-                                خروج
-                              </a>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <span className="text-secondary user-login-text m-2 fw-light">
-                        {user.name}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="profile-wrapper d-flex align-items-center">
-                      <Link href="/login">
-                        <a>
-                          <span className="material-icons text-muted m-2">
-                            person
-                          </span>
-                        </a>
-                      </Link>
-                      <span className="text-secondary user-login-text m-2 fw-light">
-                        ورود به حساب کاربری
-                      </span>
-                    </div>
-                  )}
+                  <LoginIcon/>
                 </div>
               </div>
             </div>

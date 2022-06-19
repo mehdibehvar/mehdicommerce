@@ -4,8 +4,7 @@ import { useEffect } from 'react'
 import Cookies from 'js-cookie';
 const useAuthUser=()=>{
     const dispatch=useAuthDispatchContext();
-      const token=Cookies.get("token");
-      const user=Cookies.get("user");
+      const user=Cookies.get("userInfo");
  useEffect(() => {
   if(token){
     dispatch({

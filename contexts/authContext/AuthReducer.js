@@ -1,8 +1,9 @@
+import Cookies from "js-cookie"
+
 export const initialState={
-    token:null,
     loading:false,
     error:false,
-    user:{}
+    userInfo:Cookies.get("userInfo")?JSON.parse(Cookies.get("userInfo")):null
 }
 export const actionType={
     login_request:"LOGIN-REQUEST",
@@ -19,15 +20,16 @@ export const actionType={
             loading:true
         }
       case actionType.login_success:
-        const {token,user}=action.payload
+        const userInfo=action.payload;
+        Cookies.set("userInfo",JSON.stringify(userInfo));
         return {
             ...state,
-             token,
-             user,
-             loading:false
+          userInfo,
+             loading:false,
+             error:false
         }
   case actionType.login_error:
-    const {error}=action.payload
+    const {error}=action.payload;
     return {
         ...state,
         loading:false,
@@ -36,8 +38,7 @@ export const actionType={
     case actionType.logout_user:
         return {
             ...state,
-            token:null,
-            user:null
+            userInfo:null
         }
     default:
         return state;

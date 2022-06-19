@@ -1,6 +1,5 @@
 import BasketItem from "components/basket/BasketItem";
 import { store } from "contexts/store";
-import Cookies from "js-cookie";
 import BasketLayout from "layouts/BasketLayout";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -10,14 +9,12 @@ import { useContext } from "react";
  function Basket() {
   const { state } = useContext(store);
   const { basketItems } = state.basket;
-  const token=Cookies.get("token");
+
   const router=useRouter()
   function handlePayment() {
-    if(token){
+
       router.push("/payment")
-    }else{
-      router.push("/login")
-    }
+  
   }
   const basketItemsList = basketItems.map((item) => (
     <BasketItem key={item._id} product={item} />
