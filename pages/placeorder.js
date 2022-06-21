@@ -1,4 +1,5 @@
 import PlaceOrderBasketItem from "components/placeorderBasketItem";
+import StepWizard from "components/StepWizard";
 import { store } from "contexts/store";
 import Layout from "layouts/Layout";
 import dynamic from "next/dynamic";
@@ -24,6 +25,7 @@ const taxPrice=round2(itemsPrice*0.1)
 const finalPrice=round2(itemsPrice+shippingPrice+taxPrice)
   return (
     <Layout>
+       <StepWizard active={3}/>
       <div className="container mt-3">
         <h5 className="mx-2 text-primary ">پرداخت نهایی:</h5>
         <div className="row g-3">
