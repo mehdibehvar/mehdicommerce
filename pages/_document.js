@@ -10,7 +10,6 @@ export default function Document() {
       <body className="bg-light">
         <Main />
         <NextScript />
-
       </body>
     </Html>
   )

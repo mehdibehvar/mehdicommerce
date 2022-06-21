@@ -6,6 +6,7 @@ import { post } from "lib";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import Loading from "components/loading/Loading";
 
 
 export default function LoginForm() {
@@ -39,12 +40,12 @@ dispatch({
 };
 
   return (<>
-    {loading?<p className="text-danger fs-1">loading.....</p>:<>
+    {loading?<Loading/>:<>
     <div className="container w-50">
 <form className="row mt-5 mx-5 g-3"  onSubmit={handleSubmit(onSubmit)}>
 <div className="col-md-10">
   <label htmlFor="inputEmail4" className="form-label">ایمیل</label>
-  <input  {...register("email", { required: true})}  type="email" className="form-control" id="inputEmail4"/>
+  <input  {...register("email", { required: true, pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/})}  type="email" className="form-control" id="inputEmail4"/>
 </div>
 <div className="col-md-10">
   <label htmlFor="inputPassword4" className="form-label">رمز عبور</label>

@@ -6,6 +6,8 @@ const initialState = {
   darkMode: Cookies.get("darkMode") === "OFF" ? false : true,
   basket: {
     basketItems: Cookies.get("basket") ? JSON.parse(Cookies.get("basket")) : [],
+    shippingAddress:Cookies.get("shippingAddress")?JSON.parse(Cookies.get("shippingAddress")):{},
+    paymentMethod:Cookies.get("paymentMethod")?Cookies.get("paymentMethod"):null
   },
 };
 export const basketActionTypes = {
@@ -13,7 +15,9 @@ export const basketActionTypes = {
   change_quantity: "CHANGE-QUANTITY",
   remove_from_basket: "REMOVE-FROM-BASKET",
   update_basket: "UPDATE-BASKET",
-  clear_basket:"CLEAR-BASKET"
+  clear_basket:"CLEAR-BASKET",
+  save_shipping_address:"SAVE-SHIPPING-ADDRESS",
+  save_payment_method:"SAVE-PAYMENT-METHOD"
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -39,17 +43,21 @@ function reducer(state, action) {
         ////if the item there isn't in the basket just add it to basket 
       }):[...prevBasketItems, newItem];
       Cookies.set("basket", JSON.stringify(newChangedBasketItems));
-      return { ...state, basket: { basketItems: newChangedBasketItems } };
+      return { ...state, basket: {...state.basket, basketItems: newChangedBasketItems } };
     }
 
     case basketActionTypes.remove_from_basket: {
       const id = action.payload;
       const prevBasketItems = state.basket.basketItems;
       const newBasketItems = prevBasketItems.filter((item) => item._id != id);
-      return { ...state, basket: { basketItems: newBasketItems } };
+      return { ...state, basket: {...state.basket, basketItems: newBasketItems } };
     }
     case basketActionTypes.clear_basket:
-      return{...state,basket:{basketItems:[]}}
+      return{...state,basket:{basketItems:[]}};
+      case basketActionTypes.save_shipping_address:
+        return {...state,basket:{...state.basket,shippingAddress:action.payload}};
+        case basketActionTypes.save_payment_method:
+          return {...state,basket:{...state.basket,paymentMethod:action.payload}}
     default:
       return state;
   }

@@ -2,22 +2,31 @@ import { useAuthDispatchContext, useAuthStateContext} from "contexts/authContext
 import { useForm } from "react-hook-form";
 import { actionType } from "contexts/authContext/AuthReducer";
 import { post } from "lib";
-
+import { useSnackbar } from 'notistack';
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 import Link from "next/link";
+
+
 
 export default function Register() {
     const { register,formState: { errors } ,handleSubmit} = useForm();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const dispatch=useAuthDispatchContext();
     const {error,loading}=useAuthStateContext();
     const router=useRouter()
   const redirect=router.query.redirect
-  
+  const action = key => (
+    <>
+        <button className="btn btn-danger border-0 mx-3" onClick={() => { closeSnackbar(key) }}>
+            Dismiss
+        </button>
+    </>
+);
     const onSubmit =async (inputs) => {
       const {email,password,name,confirmPassword}=inputs;
+      closeSnackbar()
       if(password!==confirmPassword){
-        alert("تکرار پسورد اشتباه است")
+        enqueueSnackbar("تکرار پسورد اشتباه است",{variant:"error",autoHideDuration: 2000,action})
         return
       }
       dispatch({
@@ -29,12 +38,13 @@ export default function Register() {
     const userInfo=response;
     dispatch({
       type:actionType.login_success,
-      payload:userInfo
+      payload:userInfo,
+      error:null
 
      })
      router.push(redirect||"/");
    } catch (error) {
-    console.log(error.response.data);
+  enqueueSnackbar(`با این ایمیل قبلا ثبت نام شده${error.response.data.slice(82)}`)
     dispatch({
       type:actionType.login_error,
       payload:{
@@ -49,26 +59,28 @@ export default function Register() {
 <div className="col-md-10">
   <label htmlFor="inputName4" className="form-label">name</label>
   <input  {...register("name", { required: true, maxLength: 20,minLength:3})}  type="text" className="form-control" id="inputName4"/>
- {errors.name?.type === 'required' && "First name is required"}
-<span className="text-danger">{errors.name && "name must have at least"}</span>
+ {errors.name?.type === 'required'?<span  className="text-danger p-0 m-0">نام اجباری است</span>:null }
+<p className="text-danger p-0 m-0">{errors.name?.type==="minLength" && "name must have at least 3"}</p>
  
 </div>
 <div className="col-md-10">
   <label htmlFor="inputEmail4" className="form-label">ایمیل</label>
-  <input  {...register("email", { pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/})}  type="email" className="form-control" id="inputEmail4"/>
-  <span className="text-danger">{errors.email && "name must have at least"}</span>
+  <input  {...register("email", {required:true, pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/})}  type="email" className="form-control" id="inputEmail4"/>
+  <span className="text-danger">{errors.email?.type==="pattern" && "ایمیل وارد شده اشتباه است"}</span>
+  <span className="text-danger">{errors.email?.type==="required" && "ایمیل اجباری است"}</span>
+  {error?<span className="text-danger">با این ایمیل قبلا ثبت نام شده{error.slice(82)}</span>:null}
 </div>
 <div className="col-md-10">
   <label htmlFor="inputPassword4" className="form-label">رمز عبور</label>
   <input  {...register("password", { required: true,minLength:5})}  type="password" className="form-control" id="inputPassword4"/>
-  <span className="text-danger">{errors.password && "name must have at least 5"}</span>
+  <span className="text-danger">{errors.password?.type==="minLength" && "پسورد حداقل باید 5 کارکتر داشته باد"}</span>
 </div>
 <div className="col-md-10">
   <label htmlFor="confirmPassword4" className="form-label"> تکرار رمز عبور</label>
   <input  {...register("confirmPassword", { required: true,minLength:5})}  type="password" className="form-control" id="confirmPassword4"/>
-  <span className="text-danger">{errors.confirmPassword && "name must have at least"}</span>
+  <span className="text-danger">{errors.confirmPassword?.type==="minLength" && "پسورد حداقل باید 5 کارکتر داشته باد"}</span>
 </div>
-{error?<span className="text-danger">با این ایمیل قبلا ثبت نام شده{error.slice(82)}</span>:null}
+
 <div className="col-10">
   <button type="submit" className="btn btn-primary w-100 mt-3">Sign up</button>
 </div>

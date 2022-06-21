@@ -26,7 +26,7 @@ import dynamic from "next/dynamic";
       <div className="btn-group">
         <button
           type="button"
-          className="dropdown-toggle bg-white border-0"
+          className="dropdown-toggle bg-white border-0 bg-opacity-10"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >

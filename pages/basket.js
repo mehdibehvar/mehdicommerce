@@ -13,7 +13,7 @@ import { useContext } from "react";
   const router=useRouter()
   function handlePayment() {
 
-      router.push("/payment")
+      router.push("/shipping")
   
   }
   const basketItemsList = basketItems.map((item) => (

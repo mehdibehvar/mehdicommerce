@@ -2,6 +2,7 @@ import AuthProvider from "contexts/authContext/AuthContext";
 import Head from "next/head";
 import Script from "next/script";
 import StoreProvider from "contexts/store";
+import { SnackbarProvider } from "notistack";
 //add your own css files here
 import "../public/assets/css/style.css";
 ///The custom app components are always rendered to every page.
@@ -17,11 +18,13 @@ function MyApp({ Component, pageProps }) {
         crossorigin="anonymous"
       />
 
-      <StoreProvider>
-        <AuthProvider>
-          <Component {...pageProps} />
-        </AuthProvider>
-      </StoreProvider>
+      <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <StoreProvider>
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
+        </StoreProvider>
+      </SnackbarProvider>
     </>
   );
 }
