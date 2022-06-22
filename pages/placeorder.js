@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import styles from "../styles/PlaceOrder.module.css"
-function PlaceOrder() {
+ function PlaceOrder() {
   const { state } = useContext(store);
   const { basketItems,paymentMethod,shippingAddress } = state.basket;
 
@@ -90,7 +90,7 @@ const finalPrice=round2(itemsPrice+shippingPrice+taxPrice)
                   <div className="col-6"><h6 className={styles.orderplacePrice}>{shippingPrice} تومان</h6></div>
                 </div>
                 <div className="row mb-2">
-                  <div className="col-6 text-danger pr-0"><h6 className={styles.orderplaceItem}>مبلغ نهایی:</h6></div>
+                  <div className="col-6 text-danger pr-0"><h6 className={styles.orderplaceItem}><strong>مبلغ نهایی:</strong></h6></div>
                   <div className="col-6"><h6 className={styles.orderplacePrice}>{finalPrice} تومان</h6></div>
                 </div>
                 <div className="row mb-2">

@@ -8,17 +8,14 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
  function LoginIcon() {
     const { userInfo}  = useAuthStateContext();
-    ///the context for authentication is different from store context;
-    ///I have two contet 1-storecontext  2-authContext
-    const {dispatch:authDispatch} = useAuthDispatchContext();
+    const {dispatch} = useAuthDispatchContext();
   
     function handleLogout() {
       Cookies.remove('userInfo');
       Cookies.remove('basket');
-      authDispatch({
+      dispatch({
         type: actionType.logout_user,
-      });
-        
+      });    
     }
   return (
    <>     {userInfo ? (
@@ -36,9 +33,11 @@ import dynamic from "next/dynamic";
         </button>
         <ul className="dropdown-menu login-menu">
           <li>
-            <a className="dropdown-item" href="#">
+        <Link href="/profile">
+        <a className="dropdown-item" >
               پروفایل
             </a>
+        </Link>
           </li>
           <li>
             <a className="dropdown-item" href="#">
@@ -59,7 +58,7 @@ import dynamic from "next/dynamic";
               >
                 خروج
               </a>
-            </Link>
+            </Link> 
           </li>
         </ul>
       </div>

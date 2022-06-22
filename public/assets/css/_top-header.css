@@ -1,13 +1,16 @@
+div.search-box{
+    width: 100%;
+}
 .search-box .search-input[type=text] {
     /* background:#edebeb; */
     border: none;
-    border-radius: 10px;
-    min-height: 50px;
-    min-width: 300px;
+    border-radius: 10px 0 0 10px;
+    min-height: 35px;
+    width: 100%;
     outline: none!important;
     box-shadow: none!important;
-    padding-right: 48px;
-    font-size: 14px;
+    padding-right: 5px;
+    font-size: 12px;
 }
 ul.login-menu {
     visibility: visible!important;
@@ -49,4 +52,10 @@ span.basket-badg{
 }
 header.header-wrapper{
     z-index: 100;
+}
+button.search-button{
+    width: 35px;
+    height: 40px;
+padding-right: 8px;
+border-radius: 0 10px 10px 0;
 }

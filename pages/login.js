@@ -28,6 +28,7 @@ const redirect=router.query.redirect
     type:actionType.login_success,
     payload:userInfo
    })
+   Cookies.set("userInfo",JSON.stringify(userInfo));
    router.push(redirect||"/");
  } catch (error) {
 dispatch({

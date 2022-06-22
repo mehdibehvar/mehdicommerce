@@ -4,10 +4,10 @@ import { store } from "contexts/store";
 import Cookies from "js-cookie";
 import { useContext } from 'react';
 export default function Logo() {
-    const {dispatch:darkModeDispatch,state}=useContext(store);
+    const {dispatch,state}=useContext(store);
     const {darkMode}=state
-    const handleDarkMode=()=> {
-        darkModeDispatch({
+    const handleDarkMode=()=> { 
+       dispatch({
           type:"TOGGLE-DARK-MODE"
         })
         const newdarkMode=!darkMode;
@@ -28,7 +28,6 @@ export default function Logo() {
     </Link> 
     <div className="form-check form-switch">
 <input onChange={handleDarkMode} checked={darkMode} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
-<label className="form-check-label" htmlFor="flexSwitchCheckChecked">dark mode</label>
 </div>
   </div>
   )

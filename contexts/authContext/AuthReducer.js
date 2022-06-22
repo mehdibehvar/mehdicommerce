@@ -21,7 +21,7 @@ export const actionType={
         }
       case actionType.login_success:
         const userInfo=action.payload;
-        Cookies.set("userInfo",JSON.stringify(userInfo));
+       
         return {
             ...state,
           userInfo,
@@ -38,7 +38,7 @@ export const actionType={
     case actionType.logout_user:
         return {
             ...state,
-            userInfo:null
+            userInfo:{}
         }
     default:
         return state;

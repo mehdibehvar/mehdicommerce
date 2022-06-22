@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 export default function ProductFeatures({ product }) {
   const { dispatch ,state} = useContext(store);
-  const { name, price, description, image, countInStock,_id } = product;
+  const { name, price, description, image, countInStock,_id ,rating} = product;
+  console.log([...Array(Math.floor(rating))]);
   const router=useRouter()
   const addToCartHandeler =async () => {
     const existedItem=state.basket.basketItems.find(item=>item._id===_id);
@@ -45,11 +46,7 @@ export default function ProductFeatures({ product }) {
         </div>
         <div className="vote-stars mt-3">
           <span>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fal fa-star"></i>
-            <i className="fal fa-star"></i>
+            {[...Array(Math.floor(rating))].map(star=><i key={star} className="fas fa-star"></i>)}
           </span>
           <p className="ml-3 d-inline text-secondary">
             (5 دیدگاه برای این کالا)

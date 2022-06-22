@@ -1,5 +1,6 @@
 
-export default function Breadcrumb() {
+export default function Breadcrumb({product}) {
+    const {category,brand}=product
   return (
     <div className="row bg-white">
     <div className="col-sm-12 ">
@@ -8,8 +9,8 @@ export default function Breadcrumb() {
                 <li className="breadcrumb-item">
                     <a href="#">خانه</a>
                 </li>
-                <li className="breadcrumb-item custom-breadcrumb-item-sp active" aria-current="page">گوشی موبایل</li>
-                <li className="breadcrumb-item custom-breadcrumb-item-sp active" aria-current="page">سامسونگ</li>
+                <li className="breadcrumb-item custom-breadcrumb-item-sp active" aria-current="page">{category}</li>
+                <li className="breadcrumb-item custom-breadcrumb-item-sp active" aria-current="page">{brand}</li>
             </ol>
         </nav>
     </div>

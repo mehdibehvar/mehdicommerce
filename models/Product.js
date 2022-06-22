@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true,index:true },
     slug: { type: String, required: true, unique: true },
     category: { type: String, required: true },
     image: { type: String, required: true },
@@ -12,9 +12,15 @@ const productSchema = new mongoose.Schema(
     numReviews: { type: Number, required: true, default: 0 },
     countInStock: { type: Number, required: true, default: 0 },
     description: { type: String, required: true },
+    tags: { type: [String], index: true } 
   },
   {
     timestamps: true,
+    query:{
+      byName(name){
+        return this.where({ name: new RegExp(name,"i") })
+      }
+    }
   }
 );
 

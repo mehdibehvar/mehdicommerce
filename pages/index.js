@@ -2,15 +2,10 @@ import Products from "components/products/products";
 import Product from "models/Product";
 import Head from "next/head";
 import db from "utils/db";
-
-import Banner from "../components/advertising/Banner";
 import Footer from "../components/footer/Footer";
 import ShipingNav from "../components/shiping-nav/ShipingNav";
 import Carousel from "../components/slider/Carousel";
-
 import MainLayout from "../layouts/main-layout";
-import styles from "../styles/Home.module.css";
-
 export default function Home({ products }) {
   // const {state}=useContext(store);
   // const {darkMode}=state;
