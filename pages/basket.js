@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-
+import styles from "../styles/placeOrder.module.css"
  function Basket() {
   const { state } = useContext(store);
   const { basketItems } = state.basket;
@@ -23,9 +23,9 @@ import { useContext } from "react";
   return (
     <BasketLayout>
       <div className="container mt-3">
-        <h5 className="mb-0 ">سبد خرید شما:</h5>
+        <h5 className="mb-2 text-primary ">سبد خرید شما:</h5>
         <div className="row g-3">
-          <div className="col-sm-10 ">
+          <div className="col-md-10 ">
             {basketItems.length?<table className="table border">
               <thead>
                 <tr>
@@ -46,15 +46,24 @@ import { useContext } from "react";
            }
           
           </div>
-          <div className="col-sm-2 border">
+          <div className="col-md-2 border">
             <div className="position-sticky top-50 start-0 ">
-              <div className="complete-buy border mb-2 rounded-3">
-                <div className="total-cost border-bottom">
-                  <h5>تعداد {basketItems.reduce((ac,cu)=>ac+parseInt(cu.quantity),0)} کالا:</h5>
-                  <h5>مبلغ قابل پرداخت: {basketItems.reduce((ac,cu)=>ac+(cu.price*cu.quantity),0)} تومان</h5>
+            <h6 className="text-danger border-bottom pb-1">خلاصه سفارش:</h6>
+            <div className="container my-3 ">
+                <div className="row my-2">
+                  <div className="col-6 pr-0"><h6 className={styles.orderplaceItem}>سفارشات:</h6></div>
+                  <div className="col-6"><h6 className={styles.orderplacePrice}>{basketItems.reduce((ac,cu)=>ac+parseInt(cu.quantity),0)} عدد</h6></div>
                 </div>
-                <button onClick={handlePayment} className="btn btn-primary">تکمیل خرید</button>
+                <div className="row my-2">
+                  <div className="col-6 pr-0"><h6 className={styles.orderplaceItem}>مبلغ کل:</h6></div>
+                  <div className="col-6"><h6 className={styles.orderplacePrice}>{basketItems.reduce((ac,cu)=>ac+(cu.price*cu.quantity),0)} تومان</h6></div>
+                </div>
+                <div className="row mb-2">
+                <button onClick={handlePayment} className="btn btn-primary w-100">تکمیل خرید</button>
+                </div>
+         
               </div>
+    
             </div>
           </div>
         </div>

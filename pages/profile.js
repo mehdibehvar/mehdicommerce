@@ -47,34 +47,34 @@ export default function Register() {
   };
   return (
 <Layout>
-<div className="container w-50">
+<div className="container">
     <h5 className="text-success mt-3">پروفایل</h5>
-<form className="row mt-2 mx-5 g-3"  onSubmit={handleSubmit(onSubmit)}>
-<div className="col-md-10">
+<form className="row d-flex flex-column align-items-center mt-2 mx-5 g-3"  onSubmit={handleSubmit(onSubmit)}>
+<div className="col-12 col-md-6">
   <label htmlFor="inputName4" className="form-label">نام</label>
   <input  {...register("name", { required: true, maxLength: 20,minLength:3})}  type="text" className="form-control" id="inputName4"/>
  {errors.name?.type === 'required'?<span  className="text-danger p-0 m-0">نام اجباری است</span>:null }
 <p className="text-danger p-0 m-0">{errors.name?.type==="minLength" && "name must have at least 3"}</p>
  
 </div>
-<div className="col-md-10">
+<div className="col-12 col-md-6">
   <label htmlFor="inputEmail4" className="form-label">ایمیل</label>
   <input  {...register("email", {required:true, pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/})}  type="email" className="form-control" id="inputEmail4"/>
   <span className="text-danger">{errors.email?.type==="pattern" && "ایمیل وارد شده اشتباه است"}</span>
   <span className="text-danger">{errors.email?.type==="required" && "ایمیل اجباری است"}</span>
 </div>
-<div className="col-md-10">
+<div className="col-12 col-md-6">
   <label htmlFor="inputPassword4" className="form-label"> رمز عبور جدید</label>
   <input  {...register("password", { minLength:5})}  type="password" className="form-control" id="inputPassword4"/>
   <span className="text-danger">{errors.password?.type==="minLength" && "پسورد حداقل باید 5 کارکتر داشته باد"}</span>
 </div>
-<div className="col-md-10">
+<div className="col-12 col-md-6">
   <label htmlFor="confirmPassword4" className="form-label">  تکرار رمز عبور جدید</label>
   <input  {...register("confirmPassword", {minLength:5})}  type="password" className="form-control" id="confirmPassword4"/>
   <span className="text-danger">{errors.confirmPassword?.type==="minLength" && "پسورد حداقل باید 5 کارکتر داشته باد"}</span>
 </div>
 
-<div className="col-10">
+<div className="col-12 col-md-6">
   <button type="submit" className="btn btn-primary w-100 mt-3">update</button>
 </div>
 

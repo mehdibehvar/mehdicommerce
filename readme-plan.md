@@ -1,3 +1,3 @@
-6.create-profile-page
-  1.create-profile-ui
-  2.create-update-user-profile
+6.tomorow plan
+ 1.logic for increment of rating by click on heart
+ 2.its similar profile logic
