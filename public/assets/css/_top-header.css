@@ -43,8 +43,8 @@ span.basket-badg{
     height: 20px;
     font-size: 10px;
     text-align: center;
-    top: 45px;
-    left: 128px;
+    top: 11px;
+    left: 12px;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -59,3 +59,11 @@ button.search-button{
 padding-right: 8px;
 border-radius: 0 10px 10px 0;
 }
+@media (max-width: 768px) {
+    .hideIcon {
+     display: none;
+    }
+  }
+  button.dropdown-user{
+   background-color: transparent;
+  }

@@ -11,7 +11,7 @@ export default function BasketIcon() {
   }, []);
   return (
     <>  
-  {domLoaded &&  <div>
+  {domLoaded &&  <div className="position-relative">
     {basketItems.length>0?<span
       className="basket-badg position-absolute p-1 translate-middle badge bg-primary 
            text-white border border-light rounded-circle"

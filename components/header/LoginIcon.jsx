@@ -20,17 +20,17 @@ import dynamic from "next/dynamic";
   return (
    <>     {userInfo ? (
     <div className="profile-wrapper d-flex align-items-center">
-      <div className="btn-group">
-        <button
-          type="button"
-          className="dropdown-toggle bg-white border-0 bg-opacity-10"
-          data-bs-toggle="dropdown"
+      <div className="btn-group"> 
+        <span
+          type="button"  
+          className="dropdown-toggle border-0 " 
+          data-bs-toggle="dropdown"       
           aria-expanded="false"
         >
-          <span className="material-icons text-success m-2">
+          <span className="material-icons text-success ms-2 my-2">
             person
           </span>
-        </button>
+        </span>
         <ul className="dropdown-menu login-menu">
           <li>
         <Link href="/profile">
@@ -63,7 +63,7 @@ import dynamic from "next/dynamic";
         </ul>
       </div>
 
-      <span className="text-secondary user-login-text m-2 fw-light">
+      <span className="text-primary user-login-text ms-2 mt-2 fw-light">
         {userInfo.name}
       </span>
     </div>
@@ -71,7 +71,7 @@ import dynamic from "next/dynamic";
     <div className="profile-wrapper d-flex align-items-center">
       <Link href="/login">
         <a>
-          <span className="material-icons text-muted m-2">
+          <span className="material-icons text-danger ms-2 my-2">
             person
           </span>
         </a>

@@ -3,12 +3,11 @@ import { createContext, useReducer } from "react";
 export const store = createContext();
 
 const initialState = {
-  darkMode: Cookies.get("darkMode") === "OFF" ? false : true,
   basket: {
     basketItems: Cookies.get("basket") ? JSON.parse(Cookies.get("basket")) : [],
     shippingAddress:Cookies.get("shippingAddress")?JSON.parse(Cookies.get("shippingAddress")):{},
     paymentMethod:Cookies.get("paymentMethod")?Cookies.get("paymentMethod"):null
-  },
+  }
 };
 export const basketActionTypes = {
   add_to_basket: "ADD-TO-BASKET",
@@ -21,11 +20,6 @@ export const basketActionTypes = {
 };
 function reducer(state, action) {
   switch (action.type) {
-    case "TOGGLE-DARK-MODE":
-      return {
-        ...state,
-        darkMode: !state.darkMode,
-      };
       ///upadate the basket////
     case basketActionTypes.update_basket: {
       const newItem = action.payload;

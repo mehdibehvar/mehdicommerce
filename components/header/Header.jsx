@@ -18,13 +18,13 @@ export default function Header() {
                 <Logo/>
                 <Search />
                 {/*top-header-buttons*/}
-                <div className="col-5 col-sm-5 col-md-5 cta-buttons d-flex align-items-center justify-content-end ">
-                  <a className="cta chat">
+                <div className="col-4 col-sm-4 col-md-5 cta-buttons d-flex align-items-center justify-content-end ">
+                  <a className="cta chat hideIcon">
                     <span className="material-icons text-muted m-2">
                       whatsapp
                     </span>
                   </a>
-                  <a className="cta hearth">
+                  <a className="cta hearth hideIcon">
                     <span className="material-icons text-muted m-2">
                       favorite_border
                     </span>

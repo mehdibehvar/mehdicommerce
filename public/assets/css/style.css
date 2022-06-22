@@ -1,14 +1,9 @@
 @import url(_reset.css);
 @import url(_top-header.css);
 @import url(_shipping.css);
-@import url(_advertising.css); 
 @import url(_carousel.css); 
 @import url(_category.css);
-@import url(_specialsugetion.css);
-@import url(_adds-banner.css);
-@import url(_sign-in.css);
 @import url(_footer.css);
-@import url(_login-form.css);
 @import url(_product-singel.css);
 /* start root style  */
 :root{
@@ -50,5 +45,4 @@
     margin-top: 5px;
   }
 }
-
 

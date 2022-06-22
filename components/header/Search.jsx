@@ -10,7 +10,7 @@ export default function Search() {
   }
   return (
     <div
-    className="search col-5 col-sm-5 col-md-5 d-flex  align-items-center flex-row-reverse justify-content-end "
+    className="search col-7 col-sm-7 col-md-5 d-flex  align-items-center flex-row-reverse justify-content-end "
   
   >
     <div id="autosugestion" className="w-100">

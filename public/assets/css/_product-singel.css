@@ -133,3 +133,7 @@ div.progress{
 div.progress-bar{
     width:75%;
 }
+input.quantity-input{
+    width: 50px;
+    height: 30px;
+}

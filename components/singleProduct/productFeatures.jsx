@@ -1,27 +1,31 @@
 import { basketActionTypes, store } from "contexts/store";
 import { get } from "lib";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 export default function ProductFeatures({ product }) {
+  const [qty,setQty]=useState(1);
   const { dispatch ,state} = useContext(store);
-  const { name, price, description, image, countInStock,_id ,rating} = product;
-  console.log([...Array(Math.floor(rating))]);
+  const {enqueueSnackbar,closeSnackbar}=useSnackbar()
+  const { name, price, description, image, countInStock,_id ,rating,category,brand} = product;
   const router=useRouter()
   const addToCartHandeler =async () => {
+    closeSnackbar()
     const existedItem=state.basket.basketItems.find(item=>item._id===_id);
     ///if the item exist in my basket sum its prevquantity with one;otherwise return one because its the first time you want add it to basket
-    const quantity=existedItem?parseInt(existedItem.quantity)+1:1
+    const quantity=existedItem?parseInt(existedItem.quantity)+parseInt(qty):qty;
     const data=await get(`/api/products/${_id}`);
     if (data.countInStock>=quantity) {
       dispatch({
         type:  basketActionTypes.update_basket,
         payload: { ...product, quantity },
       });
+      router.push("/basket")
     } else {
-      window.alert(`درخواست شما بیشتر از موجودی انبار است.تعداد ${countInStock}از این محصول در انبار وجود دارد`);
+      enqueueSnackbar(`درخواست شما بیشتر از موجودی انبار است.تعداد  ${countInStock}  عدد از این محصول در انبار وجود دارد`,{variant:"error",autoHideDuration:2000})
     }
-    router.push("/basket")
+   
   };
 
   return (
@@ -62,10 +66,10 @@ export default function ProductFeatures({ product }) {
           <p>{description}</p>
         </div>
         <div className="d-flex justify-content-between mt-3 sp-category">
-          <span>برند: شیائومی</span>
+          <span><strong className="text-primary">برند:</strong> {brand}</span>
           <span>
             <span>
-              دسته بندی:
+             <strong className="text-primary"> دسته بندی:</strong> {category}
               <span className="badge badge-pill badge-primary text-white">
                 هدست و هندزفری
               </span>
@@ -105,17 +109,15 @@ export default function ProductFeatures({ product }) {
         <div className="sp-number">
           <form className="form-inline">
             <div className="form-group row mb-3">
-              <label
-                htmlFor="inputPassword"
-                className="col-sm-2 col-form-label"
-              >
-                تعداد :
-              </label>
-              <div className="col-sm-3">
+             
+              <div className="col-sm-3 d-flex justify-content-center">
+            <span className="mx-3">تعداد:</span>
                 <input
+                value={qty}
+                onChange={(e)=>setQty(e.target.value)}
                   type="text"
-                  className="form-control col"
-                  id="inputPassword"
+                  className="form-control quantity-input"
+                  id="inputPassword" 
                 />
               </div>
               <div className="col-sm-6">
