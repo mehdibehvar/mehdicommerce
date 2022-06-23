@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { MdMenuOpen } from "react-icons/md";
 export default function NavbarMenu() {
   return (
     <nav className="header-menu  w-100 d-flex align-items-center justify-content-center position-relative">
@@ -9,7 +9,7 @@ export default function NavbarMenu() {
         <li>
           <Link href="/">
             <a>
-              <span className="material-icons  text-muted">menu_open</span>
+              <span className="text-muted fs-5"><MdMenuOpen/></span>
               <span className="header-menu-text text-dark">
                 دسته بندی ها
               </span>

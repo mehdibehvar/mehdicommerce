@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react"
-
+import { FcSearch } from "react-icons/fc";
 export default function Search() {
   const router=useRouter()
   const [search,setSearch]=useState("");
@@ -16,7 +16,7 @@ export default function Search() {
     <div id="autosugestion" className="w-100">
       <form onSubmit={handleSearch} className="search-box d-flex">
       <button  type="submit" className="search-button btn btn-light bg-primary bg-opacity-10">
-      <span className="material-icons">search</span>
+      <span><FcSearch/></span>
     </button>
         <input
          value={search}

@@ -6,6 +6,7 @@ import {
 import { actionType } from "contexts/authContext/AuthReducer";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { BsFillPersonFill,BsFillPersonCheckFill } from "react-icons/bs";
  function LoginIcon() {
     const { userInfo}  = useAuthStateContext();
     const {dispatch} = useAuthDispatchContext();
@@ -27,8 +28,8 @@ import dynamic from "next/dynamic";
           data-bs-toggle="dropdown"       
           aria-expanded="false"
         >
-          <span className="material-icons text-success ms-2 my-2">
-            person
+          <span className="text-success ms-2 my-2">
+            <BsFillPersonCheckFill/>
           </span>
         </span>
         <ul className="dropdown-menu login-menu">
@@ -71,8 +72,8 @@ import dynamic from "next/dynamic";
     <div className="profile-wrapper d-flex align-items-center">
       <Link href="/login">
         <a>
-          <span className="material-icons text-danger ms-2 my-2">
-            person
+          <span className="text-danger ms-2 my-2">
+            <BsFillPersonFill/> 
           </span>
         </a>
       </Link>

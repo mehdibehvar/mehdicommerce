@@ -1,14 +1,19 @@
 import { basketActionTypes, store } from "contexts/store";
-import { get } from "lib";
+import { get, put } from "lib";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
+import { FcLike } from "react-icons/fc";
+import { FaRegHeart } from "react-icons/fa";
+import { BiLike } from "react-icons/bi";
 export default function ProductFeatures({ product }) {
+  const [heart,setHeart]=useState(false);
+  const { name, price, description, image, countInStock,_id ,rating,category,brand,like} = product;
+  const [likes,setLikes]=useState(like)
   const [qty,setQty]=useState(1);
   const { dispatch ,state} = useContext(store);
   const {enqueueSnackbar,closeSnackbar}=useSnackbar()
-  const { name, price, description, image, countInStock,_id ,rating,category,brand} = product;
   const router=useRouter()
   const addToCartHandeler =async () => {
     closeSnackbar()
@@ -28,6 +33,17 @@ export default function ProductFeatures({ product }) {
    
   };
 
+  
+const incrementRating=async ()=>{
+  setHeart(!heart);
+  closeSnackbar();
+  try {
+    const response=await put(`api/products/${_id}`,{like:heart});
+    setLikes(response.like)
+   } catch (error) {
+    enqueueSnackbar(error)
+   }
+}
   return (
     <div className="row bg-white  my-3">
       <div className="col-8 col-md-5 p-5 " id="el">
@@ -42,15 +58,14 @@ export default function ProductFeatures({ product }) {
       <div className="col-sm-12 col-md-7 border-right sp-content ">
         <div className="header-sp d-flex justify-content-between mt-4">
           <h5 className="text-dark">{name}</h5>
-          <div className="like-icon">
-            <i className="fas fa-heart text-danger mr-2"></i>
-            <i className="fa fa-share-alt mr-2" aria-hidden="true"></i>
-            <i className="fas fa-bell text-primary "></i>
+          <div className="like-icon d-flex flex-column justify-content-between">
+            <span type="button" onClick={incrementRating}>{!heart?<i className="text-danger me-5 fs-5"><FaRegHeart/></i>:<i className="text-danger me-5 fs-4"><FcLike/></i>} </span>
+            <span className="text-danger"><BiLike/> {likes}</span>
           </div>
         </div>
         <div className="vote-stars mt-3">
           <span>
-            {[...Array(Math.floor(rating))].map(star=><i key={star} className="fas fa-star"></i>)}
+            {[...Array(Math.floor(rating))].map((star,index)=><i key={index} className="fas fa-star"></i>)}
           </span>
           <p className="ml-3 d-inline text-secondary">
             (5 دیدگاه برای این کالا)

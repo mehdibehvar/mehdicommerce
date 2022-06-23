@@ -26,6 +26,7 @@ const data = {
         numReviews: 10,
         countInStock: 20,
         description: 'This is a very nice headset',
+        like:1000
       },
       {
         name: 'هدست',
@@ -38,6 +39,7 @@ const data = {
         numReviews: 10,
         countInStock: 20,
         description: 'This is a very nice headset',
+        like:100
       },
       {
         name: 'هدست',
@@ -50,6 +52,7 @@ const data = {
         numReviews: 10,
         countInStock: 20,
         description: 'This is a very nice headset',
+        like:100
       },
       {
         name: 'دسته بازی2',
@@ -62,6 +65,7 @@ const data = {
         numReviews: 10,
         countInStock: 20,
         description: 'This is a very nice joystick',
+        like:100
       },
       {
         name: ' دوهدست',
@@ -74,6 +78,7 @@ const data = {
         numReviews: 100,
         countInStock: 240,
         description: 'This is a very nice headset',
+        like:100
       },
       {
         name: 'موبایل',
@@ -86,6 +91,7 @@ const data = {
         numReviews: 110,
         countInStock: 2,
         description: 'This is a very nice mobile',
+        like:100
       },
       {
         name: 'اداپتور',
@@ -98,6 +104,7 @@ const data = {
         numReviews: 150,
         countInStock: 250,
         description: 'This is a very nice charger',
+        like:100
       },
       {
         name: 'اداپتور',
@@ -110,6 +117,7 @@ const data = {
         numReviews: 150,
         countInStock: 250,
         description: 'This is a very nice charger',
+        like:100
       },
       {
         name: 'اداپتور',
@@ -122,6 +130,7 @@ const data = {
         numReviews: 150,
         countInStock: 250,
         description: 'This is a very nice charger',
+        like:100
       },
       {
         name: 'اداپتور',
@@ -134,6 +143,7 @@ const data = {
         numReviews: 150,
         countInStock: 250,
         description: 'This is a very nice charger',
+        like:105
       },
       {
         name: 'هندسفری',
@@ -146,6 +156,7 @@ const data = {
         numReviews: 10,
         countInStock: 0,
         description: 'This is a very nice headset',
+        like:100
       },
       {
         name: 'هندسفری',
@@ -158,6 +169,7 @@ const data = {
         numReviews: 10,
         countInStock: 0,
         description: 'This is a very nice headset',
+        like:1300
       },
      
     ],

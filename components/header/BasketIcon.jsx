@@ -1,6 +1,7 @@
 import { store } from "contexts/store";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import { BsCart4 } from "react-icons/bs";
 
 export default function BasketIcon() {
   const {state} = useContext(store);
@@ -18,7 +19,7 @@ export default function BasketIcon() {
  >{basketItems.length}</span>:<span></span>}
    <Link href="/basket">
       <a className="cta handbag">
-        <span className="material-icons text-muted m-2">shopping_bag</span>
+        <span className="text-muted m-2"><BsCart4/></span>
       </a>
     </Link> 
     </div>}

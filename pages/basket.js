@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import styles from "../styles/placeOrder.module.css"
+import styles from "../styles/basket.module.css"
  function Basket() {
   const { state } = useContext(store);
   const { basketItems } = state.basket;
@@ -51,12 +51,12 @@ import styles from "../styles/placeOrder.module.css"
             <h6 className="text-danger border-bottom pb-1">خلاصه سفارش:</h6>
             <div className="container my-3 ">
                 <div className="row my-2">
-                  <div className="col-6 pr-0"><h6 className={styles.orderplaceItem}>سفارشات:</h6></div>
-                  <div className="col-6"><h6 className={styles.orderplacePrice}>{basketItems.reduce((ac,cu)=>ac+parseInt(cu.quantity),0)} عدد</h6></div>
+                  <div className="col-6 pr-0"><h6 className={styles.basketItem}>سفارشات:</h6></div>
+                  <div className="col-6"><h6 className={styles.basketPrice}>{basketItems.reduce((ac,cu)=>ac+parseInt(cu.quantity),0)} عدد</h6></div>
                 </div>
                 <div className="row my-2">
-                  <div className="col-6 pr-0"><h6 className={styles.orderplaceItem}>مبلغ کل:</h6></div>
-                  <div className="col-6"><h6 className={styles.orderplacePrice}>{basketItems.reduce((ac,cu)=>ac+(cu.price*cu.quantity),0)} تومان</h6></div>
+                  <div className="col-6 pr-0"><h6 className={styles.basketItem}>مبلغ کل:</h6></div>
+                  <div className="col-6"><h6 className={styles.basketPrice}>{basketItems.reduce((ac,cu)=>ac+(cu.price*cu.quantity),0)} تومان</h6></div>
                 </div>
                 <div className="row mb-2">
                 <button onClick={handlePayment} className="btn btn-primary w-100">تکمیل خرید</button>
