@@ -44,7 +44,7 @@ export default function Register() {
      Cookies.set("userInfo",JSON.stringify(userInfo));
      router.push(redirect||"/");
    } catch (error) {
-  enqueueSnackbar(`با این ایمیل قبلا ثبت نام شده${error.response.data.slice(82)}`)
+  enqueueSnackbar(`با این ایمیل قبلا ثبت نام شده${error.response.data.slice(1,90)}`,{variant:"error"})
     dispatch({
       type:actionType.login_error,
       payload:{
@@ -68,7 +68,6 @@ export default function Register() {
   <input  {...register("email", {required:true, pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/})}  type="email" className="form-control" id="inputEmail4"/>
   <span className="text-danger">{errors.email?.type==="pattern" && "ایمیل وارد شده اشتباه است"}</span>
   <span className="text-danger">{errors.email?.type==="required" && "ایمیل اجباری است"}</span>
-  {error?<span className="text-danger">با این ایمیل قبلا ثبت نام شده{error.slice(82)}</span>:null}
 </div>
 <div className="col-md-10">
   <label htmlFor="inputPassword4" className="form-label">رمز عبور</label>

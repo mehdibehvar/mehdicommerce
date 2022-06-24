@@ -1,3 +1,4 @@
+import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
 import Breadcrumb from "components/singleProduct/breadcrumb";
 import ProductFeatures from "components/singleProduct/productFeatures";
@@ -13,6 +14,7 @@ export default function SingleProductLayout({ product }) {
           <ProductFeatures product={product} />
         </div>
       </main>
+      <Footer/>
     </>
   );
 }

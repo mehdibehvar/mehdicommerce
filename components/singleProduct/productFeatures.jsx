@@ -34,7 +34,7 @@ export default function ProductFeatures({ product }) {
   };
 
   
-const incrementRating=async ()=>{
+const incrementLikes=async ()=>{
   setHeart(!heart);
   closeSnackbar();
   try {
@@ -59,7 +59,7 @@ const incrementRating=async ()=>{
         <div className="header-sp d-flex justify-content-between mt-4">
           <h5 className="text-dark">{name}</h5>
           <div className="like-icon d-flex flex-column justify-content-between">
-            <span type="button" onClick={incrementRating}>{!heart?<i className="text-danger me-5 fs-5"><FaRegHeart/></i>:<i className="text-danger me-5 fs-4"><FcLike/></i>} </span>
+            <span type="button" onClick={incrementLikes}>{!heart?<i className="text-danger me-5 fs-5"><FaRegHeart/></i>:<i className="text-danger me-5 fs-5"><FcLike/></i>} </span>
             <span className="text-danger"><BiLike/> {likes}</span>
           </div>
         </div>
