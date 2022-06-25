@@ -120,32 +120,6 @@ const data = {
         like:100
       },
       {
-        name: 'اداپتور',
-        slug: '3اداپتور',
-        category: 'digitals',
-        image: '/assets/images/products/product5.webp',
-        price: 850,
-        brand: 'a4tech',
-        rating: 9.2,
-        numReviews: 150,
-        countInStock: 250,
-        description: 'This is a very nice charger',
-        like:100
-      },
-      {
-        name: 'اداپتور',
-        slug: '4اداپتور',
-        category: 'digitals',
-        image: '/assets/images/products/product5.webp',
-        price: 1000,
-        brand: 'a4tech',
-        rating: 9.2,
-        numReviews: 150,
-        countInStock: 250,
-        description: 'This is a very nice charger',
-        like:105
-      },
-      {
         name: 'هندسفری',
         slug: 'هندسفری',
         category: 'digitals',
