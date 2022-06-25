@@ -23,7 +23,7 @@ useEffect(()=>{
     setValue("city",shippingAddress.city);
     setValue("postalCode",shippingAddress.postalCode);
   }
-},[])
+})
   const onSubmit =(inputs) => {
     const {fullName,address,city,postalCode}=inputs;
   dispatch({

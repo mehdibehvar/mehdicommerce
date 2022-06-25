@@ -23,7 +23,7 @@ export default function Register() {
         }
         setValue('name', userInfo.name);
         setValue('email', userInfo.email);
-      }, []);
+      });
     const onSubmit =async (inputs) => {
       const {email,password,name,confirmPassword}=inputs;
       closeSnackbar()
