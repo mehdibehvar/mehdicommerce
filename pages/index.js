@@ -31,6 +31,7 @@ export async function getServerSideProps() {
   if (!products) {
     return { notFound: true };
   }
+  console.log(products);
   return {
     props: {
       products: products.map((doc) => db.convertDocToObj(doc)),

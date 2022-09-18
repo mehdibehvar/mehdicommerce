@@ -19,25 +19,25 @@ import { useRouter } from "next/router";
     const [likes,setLikes]=useState(like);
     const router=useRouter()
     const changeLikes=async ()=>{
-      closeSnackbar();
-      if(!userInfo){
-        router.push(`/login/?redirect=product/${slug}`);
-        return
-      }
-        dispatch({
-          type:actionType.update_userInfo,
-          payload:id
-        })
-        try{
-          const response=await put(`api/products/${id}`,{like:heart});
-          const userInfo=await put(`api/users/login`,{like:heart,id,email});
-          Cookies.set("userInfo",JSON.stringify(userInfo));
-          setLikes(response.like);
-          setHeart(!heart);
-          Cookies.set("heart",!heart);
-         } catch (error) {
-          enqueueSnackbar(error)
-         }
+      // closeSnackbar();
+      // if(!userInfo){
+      //   router.push(`/login/?redirect=product/${slug}`);
+      //   return
+      // }
+      //   dispatch({
+      //     type:actionType.update_userInfo,
+      //     payload:id
+      //   })
+      //   try{
+      //     const response=await put(`api/products/${id}`,{like:heart});
+      //     const userInfo=await put(`api/users/login`,{like:heart,id,email});
+      //     Cookies.set("userInfo",JSON.stringify(userInfo));
+      //     setLikes(response.like);
+      //     setHeart(!heart);
+      //     Cookies.set("heart",!heart);
+      //    } catch (error) {
+      //     enqueueSnackbar(error)
+      //    }
       }
       
   return (
