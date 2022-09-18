@@ -34,7 +34,7 @@ const redirect=router.query.redirect
 dispatch({
   type:actionType.login_error,
   payload:{
-    error:"errrrrrrrrrrrrror"
+    error:error.response.data.message,
   }
 })
  }
