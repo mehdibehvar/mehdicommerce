@@ -12,9 +12,7 @@ import styles from "../styles/basket.module.css"
 
   const router=useRouter()
   function handlePayment() {
-
       router.push("/shipping")
-  
   }
   const basketItemsList = basketItems.map((item) => (
     <BasketItem key={item._id} product={item} />

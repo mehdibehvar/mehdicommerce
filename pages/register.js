@@ -13,7 +13,6 @@ export default function Register() {
     const { register,formState: { errors } ,handleSubmit} = useForm();
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const dispatch=useAuthDispatchContext();
-    const {error,loading}=useAuthStateContext();
     const router=useRouter()
   const redirect=router.query.redirect
   const action = key => (
@@ -30,7 +29,7 @@ export default function Register() {
         enqueueSnackbar("تکرار پسورد اشتباه است",{variant:"error",autoHideDuration: 2000,action})
         return
       }
-      dispatch({
+      dispatch({  
         type:actionType.login_request,
     })
    try {
@@ -59,8 +58,8 @@ export default function Register() {
 <div className="col-md-10">
   <label htmlFor="inputName4" className="form-label">نام</label>
   <input  {...register("name", { required: true, maxLength: 20,minLength:3})}  type="text" className="form-control" id="inputName4"/>
- {errors.name?.type === 'required'?<span  className="text-danger p-0 m-0">نام اجباری است</span>:null }
-<p className="text-danger p-0 m-0">{errors.name?.type==="minLength" && "name must have at least 3"}</p>
+ {errors.name?.type === 'required'?<span  className="text-danger p-0 m-0">نام اجباری است</span>:null}
+<p className="text-danger p-0 m-0">{errors.name?.type==="minLength" && "نام باید حداقل 3 حرف داشته باشد."}</p>
  
 </div>
 <div className="col-md-10">

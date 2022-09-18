@@ -30,5 +30,4 @@ export default function PlaceOrderBasketItem({ product }) {
     </tr>
   );
 }
-///keys() returns an Array Iterator object with the keys of an array:
-/// for(i=1,i<product.countinstock,i++){return <option key={i} value={i}></option>}
+

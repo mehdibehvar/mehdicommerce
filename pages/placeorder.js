@@ -18,7 +18,7 @@ import styles from "../styles/PlaceOrder.module.css"
   const basketItemsList = basketItems.map((item) => (
     <PlaceOrderBasketItem key={item._id} product={item} />
   ));
-  const round2=(num)=>Math.round((num)*100 ) /100;
+  const round2=(num)=>Math.round((num)*100)/100;
   const itemsPrice=basketItems.reduce((ac,cu)=>ac+cu.quantity*cu.price,0);
 const shippingPrice=itemsPrice>1000000?0:50000;
 const taxPrice=round2(itemsPrice*0.1)
@@ -41,7 +41,6 @@ const finalPrice=round2(itemsPrice+shippingPrice+taxPrice)
                 <span>{shippingAddress.address}</span>
                 {"-"}
                 <span>کد پستی:{shippingAddress.postalCode}</span>
-
                 </div>
                 <div className="col-12 p-3 border">
                   <h6>شیوه پرداخت:</h6>
@@ -49,8 +48,8 @@ const finalPrice=round2(itemsPrice+shippingPrice+taxPrice)
                 </div>
                 <div className="col-12 p-3 border">
                   <h6>لیست سفارشات شما:</h6>
-                  {basketItems.length ? (
-                    <table className="table ">
+                  {basketItems.length?(
+                    <table className="table">
                       <thead>
                         <tr>
                           <th scope="col">عکس محصول</th>

@@ -5,7 +5,7 @@ import AuthReducer, {initialState} from "./AuthReducer";
 export const authStateContext=createContext();
  const authDispatchContext=createContext();
 export const useAuthStateContext=()=>{
-    const context =  useContext(authStateContext);
+    const context = useContext(authStateContext);
     if(!context){
         throw Error("you should use authstatecontext provider")
     }

@@ -1,19 +1,27 @@
 import Cookies from "js-cookie";
 import Layout from "layouts/Layout";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useLayoutEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuthStateContext} from "contexts/authContext/AuthContext";
 import { useForm } from "react-hook-form";
 import { basketActionTypes, store } from "contexts/store";
 import StepWizard from "components/StepWizard";
+import useGeoLocation from "customhooks/getLocation";
+import { get } from "lib";
 export default function Shipping() {
   const { register,formState: { errors },setValue ,handleSubmit} = useForm();
   const router=useRouter();
 const {userInfo}=useAuthStateContext();
 const {state,dispatch}=useContext(store);
 const {shippingAddress}=state.basket;
-
-
+const location=useGeoLocation();
+const {loaded,coordinates}=location;
+const lat=location.coordinates.lat;
+const lng=location.coordinates.lng;
+const [locationData,setLocationData]=useState({});
+const [loading,setLoading]=useState(false);
+const url_endpoint=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=932d11ba35c6ac4c1261fdead09505e5`
+console.log(lat);
 useEffect(()=>{
   if(!userInfo){
     router.push("/login?redirect=/shipping")
@@ -23,7 +31,18 @@ useEffect(()=>{
     setValue("city",shippingAddress.city);
     setValue("postalCode",shippingAddress.postalCode);
   }
-},[])
+},[]);
+useEffect(() => {
+setLoading(true)
+  if(loaded){
+    get(url_endpoint).then(response=>{
+      setLocationData(response)
+      setLoading(false)
+    })
+  }
+
+}, [loaded,url_endpoint])
+console.log(locationData);
   const onSubmit =(inputs) => {
     const {fullName,address,city,postalCode}=inputs;
   dispatch({
@@ -70,6 +89,15 @@ useEffect(()=>{
   <button type="submit" className="btn btn-primary w-100 mt-3"> ادمه فرایند خرید</button>
 </div>
 </form>
+{loaded&&<div className="mt-3">
+  <p className="">latitude:{lat}</p>
+  <p>longitude:{lng}</p>
+ {!loading&&<div>
+  <p>name:{locationData.name}</p>
+  <p>tempreture:{locationData.main.temp}</p>
+  </div>}
+
+  </div>}
   </div>
 </Layout>
   )

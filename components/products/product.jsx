@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 
-export default function Product({ product }) {
+export default function Product({ product }) { 
   const { dispatch,state } = useContext(store);
   const { name, price, slug, image, countInStock,_id } = product;
   const router=useRouter()
@@ -14,7 +14,7 @@ export default function Product({ product }) {
     ///if the item exist in my basket sum its prevquantity with one;otherwise return one because its the first time you want add it to basket
     const quantity=existedItem?parseInt(existedItem.quantity)+1:1
     const data=await get(`/api/products/${_id}`);
-    if (data.countInStock>=quantity) {
+    if (data.countInStock>=quantity){
       dispatch({
         type:  basketActionTypes.update_basket,
         payload: { ...product, quantity },

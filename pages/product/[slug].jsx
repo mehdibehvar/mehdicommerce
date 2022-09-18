@@ -1,10 +1,9 @@
 import SingleProductLayout from 'layouts/singleProductLayout';
 import Product from 'models/Product';
 import Head from 'next/head';
-
 import db from 'utils/db';
-export default function SingleProduct({product}) {
 
+export default function SingleProduct({product}) {
   return (
  <>
   <Head>

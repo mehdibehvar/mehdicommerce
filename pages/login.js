@@ -19,7 +19,7 @@ const redirect=router.query.redirect
   const onSubmit =async (inputs) => {
     const {email,password}=inputs;
     dispatch({
-      type:actionType.login_request,
+      type:actionType.login_request, 
   })
  try {
   const response=await post("api/users/login",{email,password});

@@ -10,7 +10,7 @@ export const actionType={
     login_success:"LOGIN-SUCCESS",
     logout_user:"LOGOUT-USER",
     login_error:"LOGIN-ERROR",
-    wrong_user:"WRONG-USER"
+    update_userInfo:"UPDATE-USERINFO"
 }
  const AuthReducer=(state,action)=>{
   switch (action.type) {
@@ -38,8 +38,14 @@ export const actionType={
     case actionType.logout_user:
         return {
             ...state,
-            userInfo:{}
+            userInfo:{} 
         }
+        case actionType.update_userInfo :
+            const id=action.payload;
+            const likedProduct=state.userInfo.favorites.some(fav=>fav==id)
+            const newFavorites=likedProduct?state.userInfo.favorites.filter(fav=>fav!=id):[...state.userInfo.favorites,id];
+            Cookies.set("favorites",newFavorites)
+            return {...state,userInfo:{...state.userInfo,favorites:newFavorites}}
     default:
         return state;
   }

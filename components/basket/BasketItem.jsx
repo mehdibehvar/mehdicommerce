@@ -6,14 +6,14 @@ import { useContext } from "react";
 export default function BasketItem({ product }) {
   const { dispatch } = useContext(store);
   const { image, name, price, slug, quantity, _id } = product;
-  const handleUpdateBasket = async (product, value) => {
+  const handleUpdateBasket = async (product,value)=>{
     const data = await get(`/api/products/${_id}`);
-    if (data.countInStock >= value) {
+    if (data.countInStock>=value){
       dispatch({
-        type: basketActionTypes.update_basket,
-        payload: { ...product, quantity: value },
+        type:basketActionTypes.update_basket,
+        payload:{...product,quantity:value},
       });
-    } else {
+    } else{
       window.alert(
         `درخواست شما بیشتر از موجودی انبار است.تعداد ${countInStock}از این محصول در انبار وجود دارد`
       );

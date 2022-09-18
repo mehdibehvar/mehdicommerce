@@ -68,12 +68,13 @@ return}
               className="btn btn-primary w-100 mt-3"
             >
               {" "}
-              ادمه فرایند خرید
+              ادامه فرایند خرید
             </button>
           </div>
           </form>
           <div className="col-10 mt-2">
-            <button onClick={()=>router.push("/shipping")} type="submit" className="btn btn-warning w-100">
+            <button onClick={()=>router.push("/shipping")} type="submit"
+             className="btn btn-warning w-100">
               مرحله قبل
             </button>
           </div>

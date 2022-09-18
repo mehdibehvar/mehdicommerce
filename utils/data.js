@@ -5,13 +5,15 @@ const data = {
   name:"مدیر",
   email:"admin@gmail.com",
   password:bcrypt.hashSync("123456",Math.LOG2E),
-  isAdmin:true
+  isAdmin:true,
+  favorites:[]
 },
 {
   name:"مهدی بهور",
   email:"user@gmail.com",
   password:bcrypt.hashSync("123456",Math.LOG2E),
-  isAdmin:false
+  isAdmin:false,
+  favorites:[]
 }
   ],
     products: [

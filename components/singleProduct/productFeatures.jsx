@@ -1,16 +1,12 @@
 import { basketActionTypes, store } from "contexts/store";
-import { get, put } from "lib";
+import { get } from "lib";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
-import { FcLike } from "react-icons/fc";
-import { FaRegHeart } from "react-icons/fa";
-import { BiLike } from "react-icons/bi";
+import Like from "./Like";
 export default function ProductFeatures({ product }) {
-  const [heart,setHeart]=useState(false);
-  const { name, price, description, image, countInStock,_id ,rating,category,brand,like} = product;
-  const [likes,setLikes]=useState(like)
+  const { name, price,slug, description, image, countInStock,_id ,rating,category,brand,like} = product;
   const [qty,setQty]=useState(1);
   const { dispatch ,state} = useContext(store);
   const {enqueueSnackbar,closeSnackbar}=useSnackbar()
@@ -18,7 +14,7 @@ export default function ProductFeatures({ product }) {
   const addToCartHandeler =async () => {
     closeSnackbar()
     const existedItem=state.basket.basketItems.find(item=>item._id===_id);
-    ///if the item exist in my basket sum its prevquantity with one;otherwise return one because its the first time you want add it to basket
+    ///if the item exist in my basket sum its prevquantity with qty;otherwise return qty because its the first time you want add it to basket
     const quantity=existedItem?parseInt(existedItem.quantity)+parseInt(qty):qty;
     const data=await get(`/api/products/${_id}`);
     if (data.countInStock>=quantity) {
@@ -34,16 +30,7 @@ export default function ProductFeatures({ product }) {
   };
 
   
-const incrementLikes=async ()=>{
-  setHeart(!heart);
-  closeSnackbar();
-  try {
-    const response=await put(`api/products/${_id}`,{like:heart});
-    setLikes(response.like)
-   } catch (error) {
-    enqueueSnackbar(error)
-   }
-}
+
   return (
     <div className="row bg-white  my-3">
       <div className="col-8 col-md-5 p-5 " id="el">
@@ -58,10 +45,7 @@ const incrementLikes=async ()=>{
       <div className="col-sm-12 col-md-7 border-right sp-content ">
         <div className="header-sp d-flex justify-content-between mt-4">
           <h5 className="text-dark">{name}</h5>
-          <div className="like-icon d-flex flex-column justify-content-between">
-            <span type="button" onClick={incrementLikes}>{!heart?<i className="text-danger me-5 fs-5"><FaRegHeart/></i>:<i className="text-danger me-5 fs-5"><FcLike/></i>} </span>
-            <span className="text-danger"><BiLike/> {likes}</span>
-          </div>
+           <Like like={like} id={_id} slug={slug}/>
         </div>
         <div className="vote-stars mt-3">
           <span>

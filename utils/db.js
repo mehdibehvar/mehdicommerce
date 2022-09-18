@@ -40,7 +40,7 @@ async function connect() {
     doc.updatedAt=doc.updatedAt.toString();
     return doc;
   }
-  const db = { connect, disconnect ,convertDocToObj};
+  const db = { connect,disconnect,convertDocToObj};
   export default db;
   ///add converDocToObj utility function
   //id and updateAt and createdAt are not primary datatype like string-number...

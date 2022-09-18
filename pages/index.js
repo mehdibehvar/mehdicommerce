@@ -7,8 +7,6 @@ import ShipingNav from "../components/shiping-nav/ShipingNav";
 import Carousel from "../components/slider/Carousel";
 import MainLayout from "../layouts/main-layout";
 export default function Home({ products }) {
-  // const {state}=useContext(store);
-  // const {darkMode}=state;
 
   return (
     <>

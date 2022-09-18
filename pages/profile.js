@@ -19,7 +19,7 @@ export default function Register() {
     const {userInfo}=useAuthStateContext();
     useEffect(() => {
         if (!userInfo) {
-          return router.push('/login');
+          return router.push('/login'); 
         }
         setValue('name', userInfo.name);
         setValue('email', userInfo.email);
@@ -37,12 +37,11 @@ export default function Register() {
       type:actionType.login_success,
       payload:response,
       error:null
-
      })
      Cookies.set("userInfo",JSON.stringify(response));
      enqueueSnackbar("پروفایل بروزرسانی شد",{variant:"success",autoHideDuration:2000})
    } catch (error) {
-  enqueueSnackbar(`با این ایمیل قبلا ثبت نام شده${error}`)
+  enqueueSnackbar(`${error}`)
    }
   };
   return (
