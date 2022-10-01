@@ -1,6 +1,9 @@
+
 import Products from "components/products/products";
+import { get } from "lib";
 import Product from "models/Product";
 import Head from "next/head";
+import { useEffect } from "react";
 import db from "utils/db";
 import Footer from "../components/footer/Footer";
 import ShipingNav from "../components/shiping-nav/ShipingNav";
@@ -31,7 +34,6 @@ export async function getServerSideProps() {
   if (!products) {
     return { notFound: true };
   }
-  console.log(products);
   return {
     props: {
       products: products.map((doc) => db.convertDocToObj(doc)),

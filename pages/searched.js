@@ -4,7 +4,7 @@ import Products from "components/products/products";
 import Product from 'models/Product';
 import Layout from 'layouts/Layout';
 export default function Searched({products}) {
-    console.log(products);
+
   return (
  <>
   <Head>

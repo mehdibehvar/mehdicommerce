@@ -21,7 +21,7 @@ export default function Register() {
             Dismiss
         </button>
     </>
-);
+); 
     const onSubmit =async (inputs) => {
       const {email,password,name,confirmPassword}=inputs;
       closeSnackbar()

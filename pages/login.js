@@ -1,12 +1,14 @@
 import { useAuthDispatchContext, useAuthStateContext} from "contexts/authContext/AuthContext";
 import { useForm } from "react-hook-form";
 import { actionType } from "contexts/authContext/AuthReducer";
-import { post } from "lib";
+import {  post } from "lib";
 
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import Loading from "components/loading/Loading";
+import axios from "axios";
+
 
 
 export default function LoginForm() {
@@ -23,6 +25,7 @@ const redirect=router.query.redirect
   })
  try {
   const response=await post("api/users/login",{email,password});
+
   const userInfo=response;
    dispatch({
     type:actionType.login_success,
