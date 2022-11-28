@@ -3,3 +3,4 @@
   3.shipping page
   4.serversiderendering-index.js
    5.seed data on mongodb by http://localhost:3000/api/seed
+6. mongodb database is test

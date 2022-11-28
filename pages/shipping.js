@@ -21,7 +21,7 @@ const lng=location.coordinates.lng;
 const [locationData,setLocationData]=useState({});
 const [loading,setLoading]=useState(false);
 const url_endpoint=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=932d11ba35c6ac4c1261fdead09505e5`
-console.log(lat);
+
 useEffect(()=>{
   if(!userInfo){
     router.push("/login?redirect=/shipping")
@@ -42,7 +42,6 @@ setLoading(true)
   }
 
 }, [loaded,url_endpoint])
-console.log(locationData);
   const onSubmit =(inputs) => {
     const {fullName,address,city,postalCode}=inputs;
   dispatch({
@@ -89,15 +88,14 @@ console.log(locationData);
   <button type="submit" className="btn btn-primary w-100 mt-3"> ادمه فرایند خرید</button>
 </div>
 </form>
-{loaded&&<div className="mt-3">
+{/* {loaded&&<div className="mt-3">
   <p className="">latitude:{lat}</p>
   <p>longitude:{lng}</p>
  {!loading&&<div>
   <p>name:{locationData.name}</p>
   <p>tempreture:{locationData.main.temp}</p>
   </div>}
-
-  </div>}
+  </div>} */}
   </div>
 </Layout>
   )
