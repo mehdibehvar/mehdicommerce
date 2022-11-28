@@ -14,13 +14,13 @@ export default function Shipping() {
 const {userInfo}=useAuthStateContext();
 const {state,dispatch}=useContext(store);
 const {shippingAddress}=state.basket;
-const location=useGeoLocation();
-const {loaded,coordinates}=location;
-const lat=location.coordinates.lat;
-const lng=location.coordinates.lng;
+// const location=useGeoLocation();
+// const {loaded,coordinates}=location;
+// const lat=location.coordinates.lat;
+// const lng=location.coordinates.lng;
 const [locationData,setLocationData]=useState({});
 const [loading,setLoading]=useState(false);
-const url_endpoint=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=932d11ba35c6ac4c1261fdead09505e5`
+// const url_endpoint=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=932d11ba35c6ac4c1261fdead09505e5`
 
 useEffect(()=>{
   if(!userInfo){
@@ -32,16 +32,16 @@ useEffect(()=>{
     setValue("postalCode",shippingAddress.postalCode);
   }
 },[]);
-useEffect(() => {
-setLoading(true)
-  if(loaded){
-    get(url_endpoint).then(response=>{
-      setLocationData(response)
-      setLoading(false)
-    })
-  }
+// useEffect(() => {
+// setLoading(true)
+//   if(loaded){
+//     get(url_endpoint).then(response=>{
+//       setLocationData(response)
+//       setLoading(false)
+//     })
+//   }
 
-}, [loaded,url_endpoint])
+// }, [loaded,url_endpoint])
   const onSubmit =(inputs) => {
     const {fullName,address,city,postalCode}=inputs;
   dispatch({
